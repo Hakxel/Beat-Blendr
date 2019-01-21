@@ -92,6 +92,7 @@ GEM
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     hashie (3.6.0)
+    hirb (0.7.3)
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
@@ -253,6 +254,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   figaro
+  hirb
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   mini_racer
