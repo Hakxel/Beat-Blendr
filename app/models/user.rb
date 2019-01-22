@@ -14,6 +14,9 @@ class User < ApplicationRecord
   #   end
   # end
 
+  has_many :user_tracks
+  has_many :tracks, through: :user_tracks
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.info = auth.info
@@ -21,7 +24,7 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.name = auth.info.nickname
       user.token = auth.credentials.token
-      user.favtracks = auth.extra['raw_info']
+      # user.favtracks = auth.extra['raw_info']
       user.password = Devise.friendly_token[0,20]
       # If you are using confirmable and the provider(s) you use validate emails,
       # uncomment the line below to skip the confirmation emails.
