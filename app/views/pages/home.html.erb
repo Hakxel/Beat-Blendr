@@ -1,0 +1,14 @@
+<h1>Homepage</h1>
+
+<% if current_user %>
+  <p> Username: <%= current_user.uid %> </p>
+  <p> E-mail: <%= current_user.email %> </p>
+  <p> Name: <%= current_user.name %> </p>
+  <p> User info hash: <%= current_user.info %><p>
+<% end %>
+
+<% unless current_user %>
+  <%= link_to "Sign in with Spotify", user_spotify_omniauth_authorize_path %>
+<% else %>
+  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+<% end %>
