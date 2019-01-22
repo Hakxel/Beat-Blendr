@@ -2,6 +2,14 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def spotify
     @user = User.from_omniauth(request.env['omniauth.auth'])
 
+    # response = HTTParty.get("https://api.spotify.com/v1/me/top/tracks",
+    #   headers: { "Authorization" => "Bearer #{@user.token}"})
+    #   favtracks = JSON.parse(response.body)
+      #["items"].map{|item| item["name"]}
+      # favtracks.each do |track_name|
+      #   @user.favtracks.find_or_create_by(name: track_name)
+      # end
+
     if @user.persisted?
       sign_in_and_redirect @user, :event => :authentication
       set_flash_message(:notice, :success, :kind => "Spotify") if is_navigational_format?
