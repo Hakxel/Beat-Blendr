@@ -78,3 +78,5 @@ gem 'hirb'
 gem 'pry'
 
 gem 'react_on_rails'
+
+gem 'geocoder'

@@ -90,6 +90,7 @@ GEM
     ffi (1.9.25)
     figaro (1.1.1)
       thor (~> 0.14)
+    geocoder (1.5.1)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     hashie (3.6.0)
@@ -264,6 +265,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   figaro
+  geocoder
   hirb
   httparty
   jbuilder (~> 2.5)
