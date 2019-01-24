@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get 'pages/home'
   get 'hello_world', to: 'hello_world#index'
   resources :locations, only: [:create]
+  resources :playlists, only: [:create]
 end
