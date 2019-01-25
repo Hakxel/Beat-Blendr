@@ -19,6 +19,9 @@
     <% if current_user %>
       <br>
       <div><%= image_tag("#{current_user.image}", class: "usericon")%></div>
+      <% if current_user.playlist %>
+        <iframe src="https://open.spotify.com/embed/playlist/<%=@playlist.playlist_id%>" width="300" height="380" frameborder="1" allowtransparency="true" allow="encrypted-media"></iframe>
+      <% end %>
       <%= link_to "Logout", destroy_user_session_path, method: :delete %>
     <% else %>
       <img id="loginlogo" src="https://i.imgur.com/xWrAxYe.png"/>
@@ -30,3 +33,4 @@
     <img id="bblogo" src="https://i.imgur.com/5HybGNd.png"/>
   </div>
 </div>
+

@@ -1,7 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @user = current_user
-    @playlist_id = "78Jsi7l1WpSuvQGUjfI72L"
+    @playlist = current_user.playlist if user_signed_in?
   end
 
   def show

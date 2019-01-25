@@ -1,6 +1,5 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def spotify
-    binding.pry
     @user = User.from_omniauth(request.env['omniauth.auth'])
     response = HTTParty.get("https://api.spotify.com/v1/me/top/tracks",
       headers: { "Authorization" => "Bearer #{@user.token}"})
