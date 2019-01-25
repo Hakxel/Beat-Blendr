@@ -11,6 +11,11 @@
     <%= content_tag(:p, "#{notice}", class: "notice" ) if notice %>
     <%= content_tag(:p, "#{alert}", class: "alert" ) if alert %>
 
+    <%= react_component 'Tracker' %>
+    <hr>
+
+    <%= button_to "Generate Playlist", playlists_path %>
+
 
     <% if current_user %>
       <br>

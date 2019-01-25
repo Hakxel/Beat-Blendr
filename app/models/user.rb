@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[spotify]
 
+  geocoded_by :address
+
   # def self.new_with_session(params, session)
   #   super.tap do |user|
   #     if data = session['devise.spotify_data'] && session['devise.spotify_data']['extra']['raw_info']

@@ -3,9 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '~> 2.5'
 
-gem 'hirb'
-gem 'pry'
-gem 'react_on_rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 # Use postgresql as the database for Active Record
@@ -74,6 +71,12 @@ gem 'figaro'
 
 gem 'omniauth-spotify-oauth2', '~> 1.0'
 
-gem 'rspotify'
-
 gem 'httparty'
+
+gem 'hirb'
+
+gem 'pry'
+
+gem 'react_on_rails'
+
+gem 'geocoder'
