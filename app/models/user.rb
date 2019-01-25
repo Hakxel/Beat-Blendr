@@ -18,6 +18,7 @@ class User < ApplicationRecord
 
   has_many :user_tracks
   has_many :tracks, through: :user_tracks
+  has_one :playlist
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
