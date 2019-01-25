@@ -13,10 +13,13 @@
     <%= react_component 'Tracker' %>
     <hr>
 
-    <%= button_to "Generate Playlist", playlists_path %>
+    <%#= button_to "Generate Playlist", playlists_path %>
 
 
     <% if current_user %>
+      <%= react_component 'Playlist',
+          props: { playlistId: current_user.playlist&.playlist_id } %>
+
       <br>
       <div><%= image_tag("#{current_user.image}", class: "usericon")%></div>
       <% if current_user.playlist %>
