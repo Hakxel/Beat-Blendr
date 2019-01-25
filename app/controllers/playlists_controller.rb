@@ -1,5 +1,5 @@
 class PlaylistsController < ApplicationController
-
+  skip_before_action :verify_authenticity_token
   def create
     if current_user.playlist
         # You have to look up the user's playlist's id in the DB, like:
@@ -33,6 +33,6 @@ class PlaylistsController < ApplicationController
                         },
                         body: { "uris" => tracks }.to_json
                       )
-    redirect_to root_path
+    render json: { playlistId: playlist_id }
   end
 end
