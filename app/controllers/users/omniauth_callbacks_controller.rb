@@ -14,7 +14,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       )
       UserTrack.find_or_create_by(user: @user, track: track)
     end
-      
 
     if @user.persisted?
       sign_in_and_redirect @user, :event => :authentication

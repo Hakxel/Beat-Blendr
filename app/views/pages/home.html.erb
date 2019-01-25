@@ -4,10 +4,14 @@
   <p> Username: <%= current_user.uid %> </p>
   <p> E-mail: <%= current_user.email %> </p>
   <p> Name: <%= current_user.name %> </p>
+  <img src= "<%= current_user.image %>" />
   <p> User info hash: <%= current_user.info %><p>
   <hr>
   <%= react_component 'Tracker' %>
-  
+  <hr>
+
+  <%= button_to "Generate Playlist", playlists_path %>
+
 <% end %>
 
 <% unless current_user %>
