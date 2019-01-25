@@ -13,8 +13,3 @@
  *= require_tree .
  *= require_self
  */
-.notice,
-.alert {
-  z-index: 0;
-  position: absolute;
-}
