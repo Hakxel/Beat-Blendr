@@ -7,14 +7,15 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     UserTrack.where(user: @user).delete_all
 
-    response["items"].each do |item|
-      track = Track.find_or_create_by(
-        name: item["name"],
-        spotify_id: item["id"],
-      )
-      UserTrack.find_or_create_by(user: @user, track: track)
+    if response == !blank?
+      response["items"].each do |item|
+        track = Track.find_or_create_by(
+          name: item["name"],
+          spotify_id: item["id"],
+        )
+        UserTrack.find_or_create_by(user: @user, track: track)
+      end
     end
-      
 
     if @user.persisted?
       sign_in_and_redirect @user, :event => :authentication
