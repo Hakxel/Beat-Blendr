@@ -7,7 +7,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     UserTrack.where(user: @user).delete_all
 
-
     response["items"].each do |item|
       track = Track.find_or_create_by(
         name: item["name"],
@@ -15,8 +14,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       )
       UserTrack.find_or_create_by(user: @user, track: track)
     end
-
-
 
     if @user.persisted?
       sign_in_and_redirect @user, :event => :authentication
