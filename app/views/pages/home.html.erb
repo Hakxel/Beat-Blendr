@@ -1,21 +1,32 @@
-<h1>Homepage</h1>
+<div class="spotify">
+  <div class="pulsating-circle"></div>
 
-<% if current_user %>
-  <p> Username: <%= current_user.uid %> </p>
-  <p> E-mail: <%= current_user.email %> </p>
-  <p> Name: <%= current_user.name %> </p>
-  <img src= "<%= current_user.image %>" />
-  <p> User info hash: <%= current_user.info %><p>
-  <hr>
-  <%= react_component 'Tracker' %>
-  <hr>
+  <video autoplay loop id="myvid" width="100vw" height="100vh" muted plays-inline>
+    <source src="<%= asset_path('girl.mp4') %>" type="video/mp4">
+  </video>
 
-  <%= button_to "Generate Playlist", playlists_path %>
+  <div class="signin">
 
-<% end %>
+    <%= content_tag(:p, "#{notice}", class: "notice" ) if notice %>
+    <%= content_tag(:p, "#{alert}", class: "alert" ) if alert %>
 
-<% unless current_user %>
-  <%= link_to "Sign in with Spotify", user_spotify_omniauth_authorize_path %>
-<% else %>
-  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-<% end %>
+    <%= react_component 'Tracker' %>
+    <hr>
+
+    <%= button_to "Generate Playlist", playlists_path %>
+
+
+    <% if current_user %>
+      <br>
+      <div><%= image_tag("#{current_user.image}", class: "usericon")%></div>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <img id="loginlogo" src="https://i.imgur.com/xWrAxYe.png"/>
+      <br>
+      <%= link_to "sign in with spotify", user_spotify_omniauth_authorize_path %>
+    <% end %>
+  </div>
+  <div class="desktopbody">
+    <img id="bblogo" src="https://i.imgur.com/5HybGNd.png"/>
+  </div>
+</div>
