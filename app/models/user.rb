@@ -37,8 +37,8 @@ class User < ApplicationRecord
     end
   end
 
-  def token_is_expired
-    self.expires_at.to_i < Time.now.to_i ? true : false
+  def token_is_expired?
+    self.expires_at.to_i < Time.now.to_i
   end
 
   def refresh_my_token
