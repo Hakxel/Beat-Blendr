@@ -11,13 +11,12 @@ class MenuContent extends Component {
   render() {
     return (
       <div className="menu">
-        <div className="Logout">
           <div className="menu">
             <div onClick={this.onLogout} className="Logout">
-              Click to Log Out
+              Log Out
             </div>
             <p className="hint">
-              Click outside the menu to close it, or swipe it closed on touch device
+              Click outside the menu to close it, or swipe.
             </p>
         </div>
           // <a href=''></a>
