@@ -1,17 +1,22 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+
   def spotify
     @user = User.from_omniauth(request.env['omniauth.auth'])
-    response = HTTParty.get("https://api.spotify.com/v1/me/top/tracks",
-      headers: { "Authorization" => "Bearer #{@user.token}"})
+    if @user.token_is_expired
+      @user.refresh_my_token
+    else
+      response = HTTParty.get("https://api.spotify.com/v1/me/top/tracks",
+        headers: { "Authorization" => "Bearer #{@user.token}"})
 
-    UserTrack.where(user: @user).delete_all
+      UserTrack.where(user: @user).delete_all
 
-    response["items"].each do |item|
-      track = Track.find_or_create_by(
-        name: item["name"],
-        spotify_id: item["id"],
-      )
-      UserTrack.find_or_create_by(user: @user, track: track)
+      response["items"].each do |item|
+        track = Track.find_or_create_by(
+          name: item["name"],
+          spotify_id: item["id"],
+        )
+        UserTrack.find_or_create_by(user: @user, track: track)
+      end
     end
 
     if @user.persisted?
@@ -26,4 +31,5 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def failure
     redirect_to root_path
   end
+
 end
