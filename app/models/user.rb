@@ -27,6 +27,8 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.name = auth.info.nickname
       user.token = auth.credentials.token
+      user.refresh_token = auth.credentials.refresh_token
+      user.expires_at = auth.credentials.expires_at
       # user.favtracks = auth.extra['raw_info']
       user.password = Devise.friendly_token[0,20]
       # If you are using confirmable and the provider(s) you use validate emails,
@@ -34,4 +36,29 @@ class User < ApplicationRecord
       # user.skip_confirmation!
     end
   end
+
+  def token_is_expired?
+    self.expires_at.to_i < Time.now.to_i
+  end
+
+  def refresh_my_token
+    response =  HTTParty.post(
+                "https://accounts.spotify.com/api/token",
+                headers: {
+                  "Authorization" => "Basic #{Base64.strict_encode64((ENV['SPOTIFY_CLIENT_ID'])+":"+(ENV['SPOTIFY_CLIENT_SECRET']))}"
+                },
+                body: {
+                  "grant_type" => "refresh_token",
+                  "refresh_token" => "#{self.refresh_token}"
+                }
+              )
+
+    refreshhash = JSON.parse(response.body)
+
+    self.token      = refreshhash['access_token']
+    self.expires_at = Time.now.to_i + refreshhash["expires_in"]
+
+    self.save
+  end
+
 end
