@@ -2,7 +2,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def spotify
     @user = User.from_omniauth(request.env['omniauth.auth'])
-    if @user.token_is_expired
+    if @user.token_is_expired?
       @user.refresh_my_token
     else
       response = HTTParty.get("https://api.spotify.com/v1/me/top/tracks",
