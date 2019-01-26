@@ -6,6 +6,19 @@ class PlaylistsController < ApplicationController
         playlist_id = current_user.playlist.spotify_id
         # and then use the spotify API to clear out all of its tracks
         ## ^^ this part you still need to do....
+        tracks = []
+        User.near([current_user.latitude, current_user.longitude], 0.25)
+            .each{ |user| tracks << user.tracks.pluck(:spotify_id) }
+        tracks.flatten!
+        tracks.map!{|spotify_id| "spotify:track:#{spotify_id}"}
+        replaced_playlist = HTTParty.put(
+                              "https://api.spotify.com/v1/playlists/#{playlist_id}/tracks",
+                              headers: {
+                              "Authorization" => "Bearer #{current_user.token}",
+                              "Content-Type" => "application/json"
+                              },
+                              body: { "uris" => tracks }.to_json
+                            )
     else
       playlist_response = HTTParty.post(
                             "https://api.spotify.com/v1/users/#{current_user.uid}/playlists",
