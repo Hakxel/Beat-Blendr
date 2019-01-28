@@ -1,6 +1,15 @@
 class PlaylistsController < ApplicationController
   skip_before_action :verify_authenticity_token
   def create
+    case params[:playlistType]
+    when "all"
+      # make a regular playlist
+    when "party"
+      # make a party playlist
+    when "chill"
+      # make a chill playlist
+    end
+
     if current_user.playlist
         playlist_id = current_user.playlist.spotify_id
         tracks = []

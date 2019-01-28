@@ -2,22 +2,42 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 export default class Playlist extends Component {
-  state = { playlistId: this.props.playlistId || '' }
+  state = {
+            playlistType: 'all',
+            playlistId: this.props.playlistId || ''
+          }
 
   generatePlaylist = () => {
-    axios.post('/playlists.json')
+    const { playlistType } = this.state
+    axios.post('/playlists.json', { playlistType })
       .then(response => {
         this.setState({ playlistId: response.data.playlistId })
       })
   }
 
+  handleChange = event => {
+    this.setState({ playlistType: event.target.value })
+  }
+
   render(){
-    const { playlistId } = this.state
+    const { playlistId, playlistType } = this.state
     if(!playlistId){
       return(
-        <button onClick={this.generatePlaylist}>
-          Generate Playlist
-        </button>
+        <div>
+
+          <select
+            onChange={this.handleChange}
+            value={playlistType}
+          >
+            <option value="all">All</option>
+            <option value="party">Party</option>
+            <option value="chill"> Chill</option>
+          </select>
+
+          <button onClick={this.generatePlaylist}>
+            Generate Playlist
+          </button>
+        </div>
       )
     }else{
       return(
