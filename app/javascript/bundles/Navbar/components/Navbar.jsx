@@ -33,9 +33,9 @@ class Navbar extends Component {
           menuClicked={this.openMenu.bind(this)}
           width={32}
           height={24}
-          strokeWidth={3}
+          strokeWidth={2}
           rotate={0}
-          color="black"
+          color="white"
           borderRadius={0}
           animationDuration={0.5} />
       </div>

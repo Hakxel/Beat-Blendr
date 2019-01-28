@@ -9,9 +9,9 @@ class Player extends Component {
 
   // fetchPlaylist = (userId) => {
   // const { data } = axios.get(`/pages/${userId}`)
-  // .then( this.setState({ playlistId: data.playlistId }) 
+  // .then( this.setState({ playlistId: data.playlistId })
   // )}
-
+  //
   // componentDidMount(){
   //   fetchPlaylist(this.state.userId)
   // }

@@ -1,32 +1,36 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
-// import './menuContent.scss'
 
 class MenuContent extends Component {
   constructor(props) {
     super(props)
-
   }
+   handleLogout = () => {
+const link = document.createElement('a');
+link.setAttribute('href', '/users/sign_out');
+link.setAttribute('rel', 'nofollow');
+link.setAttribute('data-method', 'delete');
+document.body.appendChild(link);
+link.click();
+}
 
   render() {
     return (
-      <div className="menu">
+      <div className="grandMenu">
           <div className="menu">
-            <div onClick={this.onLogout} className="Logout">
-              Log Out
+            <div className="signButton">
+              <button id="signOutButton" onClick={this.handleLogout}>Sign Out</button>
             </div>
+            <p>hello world</p>
+          </div>
             <p className="hint">
-              Click outside the menu to close it, or swipe.
+              Click outside the menu to close it, or swipe it away.
             </p>
         </div>
-          // <a href=''></a>
-          // <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-      </div>
-
-        <p className="hint">Click outside the menu to close it, or swipe it closed on touch device</p>
-      </div>
     )
   }
 }
+
 
 export default MenuContent
