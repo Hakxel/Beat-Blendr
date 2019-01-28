@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 2019_01_28_121522) do
     t.string "playlist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "type"
     t.index ["user_id"], name: "index_playlists_on_user_id"
   end
 
