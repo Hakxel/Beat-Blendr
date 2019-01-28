@@ -23,22 +23,6 @@ export default class Playlist extends Component {
     const { playlistId, playlistType } = this.state
     if(!playlistId){
       return(
-<<<<<<< HEAD
-        <button className="Currentplayer" onClick={this.generatePlaylist}>
-          Generate Playlist
-        </button>
-      )
-    }else{
-      return(
-        <iframe className="Spotifyplayer"
-          src={`https://open.spotify.com/embed/playlist/${playlistId}`}
-          width="300"
-          height="380"
-          frameborder="2"
-          allowtransparency="true"
-          allow="encrypted-media"
-        ></iframe>
-=======
         <div>
           <select
             onChange={this.handleChange}
@@ -80,7 +64,6 @@ export default class Playlist extends Component {
           </button>
         </div>
 
->>>>>>> master
       )
     }
   }

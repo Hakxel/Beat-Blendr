@@ -16,7 +16,6 @@
     <% if current_user %>
       <%= react_component 'Playlist',
           props: { playlistId: current_user.playlist&.playlist_id } %>
-<<<<<<< HEAD
       <div id="userbox">
         <div id="left"><%= image_tag("#{current_user.image}", class: "usericon")%>
         </div>
@@ -32,12 +31,6 @@
             </li>
         </div>
       </div>
-=======
-
-
-      <br>
-      <div><%= image_tag("#{current_user.image}", class: "usericon")%></div>
->>>>>>> master
       <% if current_user.playlist %>
     <% end %>
     <% else %>
