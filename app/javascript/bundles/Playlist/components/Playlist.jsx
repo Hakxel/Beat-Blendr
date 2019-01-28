@@ -49,6 +49,16 @@ export default class Playlist extends Component {
             allowtransparency="true"
             allow="encrypted-media"
           ></iframe>
+
+          <select
+            onChange={this.handleChange}
+            value={playlistType}
+          >
+            <option value="all">All</option>
+            <option value="party">Party</option>
+            <option value="chill"> Chill</option>
+          </select>
+
           <button onClick={this.generatePlaylist}>
             Refresh Playlist
           </button>
