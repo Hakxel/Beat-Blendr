@@ -24,7 +24,6 @@ export default class Playlist extends Component {
     if(!playlistId){
       return(
         <div>
-
           <select
             onChange={this.handleChange}
             value={playlistType}
@@ -50,19 +49,6 @@ export default class Playlist extends Component {
             allowtransparency="true"
             allow="encrypted-media"
           ></iframe>
-
-          <form onSubmit={this.handleSubmit} >
-            <h3>Select Playlist Type</h3>
-            <div>
-              <p>All</p>
-              <input type="radio" name="radio" value="all" onChange={this.handleChange} checked={ true }/>
-              <p>Party</p>
-              <input type="radio" name="radio" value="party" onChange={this.handleChange}/>
-              <p>Chill</p>
-              <input type="radio" name="radio" value="chill" onChange={this.handleChange}/>
-            </div>
-          </form>
-
           <button onClick={this.generatePlaylist}>
             Refresh Playlist
           </button>

@@ -1,20 +1,11 @@
 class PlaylistsController < ApplicationController
   skip_before_action :verify_authenticity_token
   def create
-    case params[:playlistType]
-    when "all"
-      # make a regular playlist
-    when "party"
-      # make a party playlist
-    when "chill"
-      # make a chill playlist
-    end
-
     if current_user.playlist
         playlist_id = current_user.playlist.spotify_id
         tracks = []
         User.near([current_user.latitude, current_user.longitude], 0.25)
-            .each{ |user| tracks << user.tracks.pluck(:spotify_id) }
+            .each{ |user| tracks << user.tracks.send(params[:playlistType]).pluck(:spotify_id) }
         tracks.flatten!
         ## filter songs by user choice here
         tracks.map!{|spotify_id| "spotify:track:#{spotify_id}"}
@@ -42,15 +33,8 @@ class PlaylistsController < ApplicationController
 
       tracks = []
       User.near([current_user.latitude, current_user.longitude], 0.25)
-          .each{ |user| tracks << user.tracks.pluck(:spotify_id) }
+          .each{ |user| tracks << user.tracks.send(params[:playlistType]).pluck(:spotify_id) }
       tracks.flatten!
-
-      # filter songs by user choice here, something like:
-      if current_user.playlist(type: "party") #or variable if possible
-        tracks.select { |track| track.where(tracks["danceability"] > 6]) }
-      elsif current_user.playlist(type: "chill") #or variable if possible
-        tracks.select { |track| track.where(tracks["danceability"] < 6]) }
-      end
 
       tracks.map!{|spotify_id| "spotify:track:#{spotify_id}"}
       track_response  = HTTParty.post(
