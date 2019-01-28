@@ -28,7 +28,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
 
     features_response["audio_features"].each do |audio_features|
-      Track.where(spotify_id: audio_features["id"]).update_all(audio_features: audio_features)
+      Track.where(spotify_id: audio_features["id"]).update_all(danceability: audio_features["danceability"], energy: audio_features["energy"], speechiness: audio_features["speechiness"], tempo: audio_features["tempo"])
     end
 
     if @user.persisted?
