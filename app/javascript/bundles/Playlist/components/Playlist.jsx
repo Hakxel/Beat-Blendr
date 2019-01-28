@@ -15,13 +15,13 @@ export default class Playlist extends Component {
     const { playlistId } = this.state
     if(!playlistId){
       return(
-        <button onClick={this.generatePlaylist}>
+        <button className="Currentplayer" onClick={this.generatePlaylist}>
           Generate Playlist
         </button>
       )
     }else{
       return(
-        <iframe
+        <iframe className="Spotifyplayer"
           src={`https://open.spotify.com/embed/playlist/${playlistId}`}
           width="300"
           height="380"
