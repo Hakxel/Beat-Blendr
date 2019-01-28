@@ -21,7 +21,7 @@ class Navbar extends Component {
   }
   render(){
     return(
-      <div>
+      <div class="hamburger">
         <CheeseburgerMenu
           isOpen={this.state.menuOpen}
           closeCallback={this.closeMenu.bind(this)}>

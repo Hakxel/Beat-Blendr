@@ -22,10 +22,9 @@ link.click();
             <div className="signButton">
               <button id="signOutButton" onClick={this.handleLogout}>Sign Out</button>
             </div>
-            <p>hello world</p>
+
           </div>
             <p className="hint">
-              Click outside the menu to close it, or swipe it away.
             </p>
         </div>
     )

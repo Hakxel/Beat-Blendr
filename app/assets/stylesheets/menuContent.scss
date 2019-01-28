@@ -1,10 +1,7 @@
 .grandMenu{
   background-color: #3B3B3B;
-  margin-bottom: 1000px;
-}
-#signOutButton{
-  font-size: 50px;
-  padding: 10px 20px;
-  background-color: gray;
-  border: 2px solid #000000;
-}
+  height: 100vh;
+  }
+  .grandMenu:below{
+    background-color: #3B3B3B;
+  }
