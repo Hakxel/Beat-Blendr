@@ -11,7 +11,10 @@ export default class Playlist extends Component {
     const { playlistType } = this.state
     axios.post('/playlists.json', { playlistType })
       .then(response => {
-        this.setState({ playlistId: response.data.playlistId })
+        this.setState({
+          playlistId: response.data.playlistId,
+          updatedAt: new Date().getTime()
+        })
       })
   }
 
@@ -20,7 +23,7 @@ export default class Playlist extends Component {
   }
 
   render(){
-    const { playlistId, playlistType } = this.state
+    const { playlistId, playlistType, updatedAt } = this.state
     if(!playlistId){
       return(
         <div>
@@ -42,7 +45,7 @@ export default class Playlist extends Component {
       return(
         <div>
           <iframe
-            src={`https://open.spotify.com/embed/playlist/${playlistId}`}
+            src={`https://open.spotify.com/embed/playlist/${playlistId}?updatedAt=${updatedAt}`}
             width="300"
             height="380"
             frameborder="2"
