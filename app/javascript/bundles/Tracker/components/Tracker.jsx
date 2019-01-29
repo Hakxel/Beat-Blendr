@@ -57,7 +57,7 @@ class Tracker extends Component {
         }
         navigator.geolocation.getCurrentPosition(success, error, options)
       }
-      
+
   render() {
     const { latitude, longitude } = this.state
     return (
