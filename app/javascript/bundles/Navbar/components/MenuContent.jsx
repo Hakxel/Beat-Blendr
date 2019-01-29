@@ -22,7 +22,9 @@ link.click();
             <div className="signButton">
               <button id="signOutButton" onClick={this.handleLogout}>Sign Out</button>
             </div>
-
+            <div className="">
+              
+            </div>
           </div>
             <p className="hint">
             </p>

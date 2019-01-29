@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 2019_01_28_121522) do
     t.string "provider"
     t.string "uid"
     t.string "name"
-    t.json "favtracks"
     t.json "info"
     t.string "image"
     t.string "token"
