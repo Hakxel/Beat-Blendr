@@ -1,12 +1,65 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import ReactOnRails from 'react-on-rails';
+
+const csrfHeaders = {
+  'X-Requested-With': 'XMLHttpRequest',
+  'X-CSRF-TOKEN': ReactOnRails.authenticityToken()
+}
 
 export default class Playlist extends Component {
   state = {
             playlistType: this.props.playlistType || 'all',
             playlistId: this.props.playlistId || '',
-            loading: false
+            loading: false,
+            latitude: null,
+            longitude: null
           }
+
+  componentDidMount() {
+    this.trackLocation()
+    this.interval = setInterval(this.trackLocation, 60000);
+    window.addEventListener('beforeunload', this.handleLeavePage)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('beforeunload', this.handleLeavePage)
+    clearInterval(this.interval)
+  }
+
+  handleLeavePage = () => {
+    clearInterval(this.interval)
+    axios.post(
+      '/locations',
+      { location: { latitude: null, longitude: null } },
+      { headers: csrfHeaders }
+    )
+  }
+
+  trackLocation = () => {
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 30000,
+      maximumAge: 27000
+    }
+    const success = pos => {
+      const { latitude, longitude } = pos.coords
+      axios.post(
+        '/locations',
+        { location: { latitude, longitude } },
+        { headers: csrfHeaders }
+      ).then(response => {
+        this.setState({
+          latitude: response.data.latitude,
+          longitude: response.data.longitude
+        })
+      })
+    }
+    const error = err => {
+      console.warn(`ERROR(${err.code}): ${err.message}`)
+    }
+    navigator.geolocation.getCurrentPosition(success, error, options)
+  }
 
   generatePlaylist = () => {
     const { playlistType } = this.state
@@ -31,11 +84,11 @@ export default class Playlist extends Component {
   }
 
   render(){
-    const { playlistId, playlistType } = this.state
-    console.log(playlistType)
-    if(!playlistId){
+    const { playlistId, playlistType, latitude, longitude } = this.state
+    if(latitude && longitude){
       return(
         <div>
+          <p>You are calling from {latitude}, {longitude}</p>
           <select
             onChange={this.handleChange}
             value={playlistType}
@@ -45,38 +98,28 @@ export default class Playlist extends Component {
             <option value="chill"> Chill</option>
           </select>
 
-          <button onClick={this.generatePlaylist}>
-            { this.state.loading ? 'Loading...' : 'Generate Playlist' }
+          {
+            playlistId &&
+            <iframe
+              src={`https://open.spotify.com/embed/playlist/${playlistId}`}
+              width="300"
+              height="380"
+              frameBorder="2"
+              allowtransparency="true"
+              allow="encrypted-media"
+            ></iframe>
+          }
+
+          <button onClick={ playlistId ? this.refreshPlaylist : this.generatePlaylist }>
+            {
+              this.state.loading ? 'Loading...' :
+              this.state.playlistId ? 'Refresh Playlist' : 'Generate Playlist'
+            }
           </button>
         </div>
       )
     }else{
-      return(
-        <div>
-          <iframe
-            src={`https://open.spotify.com/embed/playlist/${playlistId}`}
-            width="300"
-            height="380"
-            frameBorder="2"
-            allowtransparency="true"
-            allow="encrypted-media"
-          ></iframe>
-
-          <select
-            onChange={this.handleChange}
-            value={playlistType}
-          >
-            <option value="all">All</option>
-            <option value="party">Party</option>
-            <option value="chill"> Chill</option>
-          </select>
-
-          <button onClick={this.refreshPlaylist}>
-            { this.state.loading ? 'Loading...' : 'Refresh Playlist' }
-          </button>
-        </div>
-
-      )
+      return <p>Please wait while we find your location...</p>
     }
   }
 }
