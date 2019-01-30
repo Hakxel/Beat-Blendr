@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import ReactOnRails from 'react-on-rails';
 
 const csrfHeaders = {
   'X-Requested-With': 'XMLHttpRequest',
