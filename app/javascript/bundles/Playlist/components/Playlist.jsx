@@ -3,19 +3,27 @@ import axios from 'axios'
 
 export default class Playlist extends Component {
   state = {
-            playlistType: 'all',
-            playlistId: this.props.playlistId || ''
+            playlistType: this.props.playlistType || 'all',
+            playlistId: this.props.playlistId || '',
+            loading: false
           }
 
   generatePlaylist = () => {
     const { playlistType } = this.state
-    axios.post('/playlists.json', { playlistType })
+    this.setState({loading: true})
+    axios.post('/playlist.json', { playlistType })
       .then(response => {
         this.setState({
-          playlistId: response.data.playlistId,
-          updatedAt: new Date().getTime()
+          playlistId:   response.data.playlistId,
+          playlistType: response.data.playlistType,
+          loading: false
         })
       })
+  }
+
+  refreshPlaylist = () => {
+    this.setState({ loading: true })
+    axios.delete('/playlist.json').then( _ => this.generatePlaylist() )
   }
 
   handleChange = event => {
@@ -23,7 +31,8 @@ export default class Playlist extends Component {
   }
 
   render(){
-    const { playlistId, playlistType, updatedAt } = this.state
+    const { playlistId, playlistType } = this.state
+    console.log(playlistType)
     if(!playlistId){
       return(
         <div>
@@ -37,7 +46,7 @@ export default class Playlist extends Component {
           </select>
 
           <button onClick={this.generatePlaylist}>
-            Generate Playlist
+            { this.state.loading ? 'Loading...' : 'Generate Playlist' }
           </button>
         </div>
       )
@@ -45,10 +54,10 @@ export default class Playlist extends Component {
       return(
         <div>
           <iframe
-            src={`https://open.spotify.com/embed/playlist/${playlistId}?updatedAt=${updatedAt}`}
+            src={`https://open.spotify.com/embed/playlist/${playlistId}`}
             width="300"
             height="380"
-            frameborder="2"
+            frameBorder="2"
             allowtransparency="true"
             allow="encrypted-media"
           ></iframe>
@@ -62,8 +71,8 @@ export default class Playlist extends Component {
             <option value="chill"> Chill</option>
           </select>
 
-          <button onClick={this.generatePlaylist}>
-            Refresh Playlist
+          <button onClick={this.refreshPlaylist}>
+            { this.state.loading ? 'Loading...' : 'Refresh Playlist' }
           </button>
         </div>
 

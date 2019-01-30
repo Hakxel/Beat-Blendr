@@ -18,7 +18,11 @@
         <%= react_component 'Navbar' %>
       </div>
       <%= react_component 'Playlist',
-          props: { playlistId: current_user.playlist&.playlist_id } %>
+          props:  {
+                    playlistId:   current_user.playlist&.playlist_id,
+                    playlistType: current_user.playlist&.playlist_type
+                  }
+      %>
       <div id="userbox">
         <div id="left"><%= image_tag("#{current_user.image}", class: "usericon")%>
         </div>

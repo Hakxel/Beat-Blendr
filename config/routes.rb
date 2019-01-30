@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'hello_world', to: 'hello_world#index'
   resources :locations, only: [:create]
-  resources :playlists, only: [:create]
+  resource :playlist, only: [:create, :destroy]
   resources :pages, only: [:home, :show]
 end
