@@ -7,8 +7,6 @@
 
     <%= content_tag(:p, "#{notice}", class: "notice" ) if notice %>
     <%= content_tag(:p, "#{alert}", class: "alert" ) if alert %>
-
-    <%= react_component 'Tracker' %>
     <!-- <hr> -->
 
     <%#= button_to "Generate Playlist", playlists_path %>
@@ -18,7 +16,11 @@
         <%= react_component 'Navbar' %>
       </div>
       <%= react_component 'Playlist',
-          props: { playlistId: current_user.playlist&.playlist_id } %>
+          props:  {
+                    playlistId:   current_user.playlist&.playlist_id,
+                    playlistType: current_user.playlist&.playlist_type
+                  }
+      %>
       <div id="userbox">
         <div id="left"><%= image_tag("#{current_user.image}", class: "usericon")%>
         </div>
