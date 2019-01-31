@@ -12,17 +12,21 @@ export default class Playlist extends Component {
             playlistId: this.props.playlistId || '',
             loading: false,
             latitude: null,
-            longitude: null
+            longitude: null,
+            playerWidth: window.innerWidth < 500 ? 450 : 0.8 * window.innerWidth,
+            playerHeight: window.innerHeight * 0.8
           }
 
   componentDidMount() {
     this.trackLocation()
     this.interval = setInterval(this.trackLocation, 60000);
     window.addEventListener('beforeunload', this.handleLeavePage)
+    window.addEventListener('resize', this.handleResize)
   }
 
   componentWillUnmount() {
     window.removeEventListener('beforeunload', this.handleLeavePage)
+    window.removeEventListener('resize', this.handleResize)
     clearInterval(this.interval)
   }
 
@@ -52,7 +56,6 @@ export default class Playlist extends Component {
           latitude: response.data.latitude,
           longitude: response.data.longitude
         })
-        window.addEventListener('resize', this.handleResize)
       })
     }
     const error = err => {
@@ -62,18 +65,11 @@ export default class Playlist extends Component {
   }
 
   handleResize = () => {
-    const players = document.querySelectorAll(".spotify-player")
-    if(window.innerWidth < 500){
-      players.forEach(player => {
-        player.width = 479
-        player.height = window.innerHeight * 0.8
-      })
-    }else{
-      players.forEach(player => {
-        player.width = window.innerWidth * 0.8
-        player.height = window.innerHeight * 0.8
-      })
-    }
+    const { innerHeight, innerWidth } = window
+    this.setState({
+      playerHeight: 0.8 * innerHeight,
+      playerWidth: innerWidth < 500 ? 450 : 0.8 * innerWidth
+    })
   }
 
   generatePlaylist = () => {
@@ -109,8 +105,8 @@ export default class Playlist extends Component {
               id="Spotifyplayer"
               className="spotify-player"
               src={`https://open.spotify.com/embed/playlist/${playlistId}`}
-              width="100%"
-              height="100%"
+              width={this.state.playerWidth}
+              height={this.state.playerHeight}
               frameBorder="2"
               allowtransparency="true"
               allow="encrypted-media"
