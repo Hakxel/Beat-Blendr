@@ -1,5 +1,5 @@
 <div class="spotify">
-  <video autoplay loop id="myvid" width="100vw" height="100vh" muted plays-inline>
+  <video class="<%= current_user ? 'signed-in' : '' %>" autoplay loop id="myvid" width="100vw" height="100vh" muted plays-inline>
     <source src="<%= asset_path('girl.mp4') %>" type="video/mp4">
   </video>
 
@@ -40,6 +40,6 @@
     <% end %>
   </div>
   <div class="desktopbody">
-    <img id="bblogo" src="https://i.imgur.com/5HybGNd.png"/>
+    <img id="bblogo" src="https://i.imgur.com/Vux0PdI.png"/>
   </div>
 </div>

@@ -10,7 +10,7 @@
     <%= javascript_pack_tag "tracker-bundle" %>
     </head>
 
-  <body>
+    <body style="<%= current_user ? 'background-color: red;' : 'background-color: black;' %>">
     <%= yield %>
-  </body>
+    </body>
 </html>

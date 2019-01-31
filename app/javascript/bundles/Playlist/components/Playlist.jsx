@@ -26,8 +26,7 @@ export default class Playlist extends Component {
         <div>
           <select
             onChange={this.handleChange}
-            value={playlistType}
-          >
+            value={playlistType}>
             <option value="all">All</option>
             <option value="party">Party</option>
             <option value="chill"> Chill</option>
@@ -40,8 +39,8 @@ export default class Playlist extends Component {
       )
     }else{
       return(
-        <div>
-          <iframe
+        <div class="spotifycontainer">
+          <iframe id="Spotifyplayer"
             src={`https://open.spotify.com/embed/playlist/${playlistId}`}
             width="300"
             height="380"
@@ -50,7 +49,7 @@ export default class Playlist extends Component {
             allow="encrypted-media"
           ></iframe>
 
-          <select
+        <select name="dropdwn"
             onChange={this.handleChange}
             value={playlistType}
           >
@@ -59,7 +58,7 @@ export default class Playlist extends Component {
             <option value="chill"> Chill</option>
           </select>
 
-          <button onClick={this.generatePlaylist}>
+          <button onClick={this.generatePlaylist} id="refreshbtn">
             Refresh Playlist
           </button>
         </div>
@@ -67,4 +66,11 @@ export default class Playlist extends Component {
       )
     }
   }
+}
+
+
+
+function name () {
+
+
 }
