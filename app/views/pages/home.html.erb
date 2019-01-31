@@ -7,20 +7,19 @@
 
     <%= content_tag(:p, "#{notice}", class: "notice" ) if notice %>
     <%= content_tag(:p, "#{alert}", class: "alert" ) if alert %>
-    <!-- <hr> -->
-
-    <%#= button_to "Generate Playlist", playlists_path %>
 
     <% if current_user %>
       <div className="nav">
         <%= react_component 'Navbar' %>
       </div>
-      <%= react_component 'Playlist',
-          props:  {
-                    playlistId:   current_user.playlist&.playlist_id,
-                    playlistType: current_user.playlist&.playlist_type
-                  }
-      %>
+      <div id="mini-player">
+        <%= react_component 'Playlist',
+            props:  {
+                      playlistId:   current_user.playlist&.playlist_id,
+                      playlistType: current_user.playlist&.playlist_type
+                    }
+        %>
+      </div>
       <div id="userbox">
         <div id="left"><%= image_tag("#{current_user.image}", class: "usericon")%>
         </div>
@@ -44,6 +43,15 @@
     <% end %>
   </div>
   <div class="desktopbody">
+    <div id="full-body-player">
+      <%= react_component 'Playlist',
+          props:  {
+                    playlistId:   current_user.playlist&.playlist_id,
+                    playlistType: current_user.playlist&.playlist_type
+                  }
+      %>
+    </div>
     <img id="bblogo" src="https://i.imgur.com/Vux0PdI.png"/>
+
   </div>
 </div>

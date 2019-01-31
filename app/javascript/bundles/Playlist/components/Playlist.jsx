@@ -52,12 +52,28 @@ export default class Playlist extends Component {
           latitude: response.data.latitude,
           longitude: response.data.longitude
         })
+        window.addEventListener('resize', this.handleResize)
       })
     }
     const error = err => {
       console.warn(`ERROR(${err.code}): ${err.message}`)
     }
     navigator.geolocation.getCurrentPosition(success, error, options)
+  }
+
+  handleResize = () => {
+    const players = document.querySelectorAll(".spotify-player")
+    if(window.innerWidth < 500){
+      players.forEach(player => {
+        player.width = 479
+        player.height = window.innerHeight * 0.8
+      })
+    }else{
+      players.forEach(player => {
+        player.width = window.innerWidth * 0.8
+        player.height = window.innerHeight * 0.8
+      })
+    }
   }
 
   generatePlaylist = () => {
@@ -90,10 +106,11 @@ export default class Playlist extends Component {
           {
             playlistId &&
             <iframe
-            id="Spotifyplayer"
+              id="Spotifyplayer"
+              className="spotify-player"
               src={`https://open.spotify.com/embed/playlist/${playlistId}`}
-              width="300"
-              height="380"
+              width="100%"
+              height="100%"
               frameBorder="2"
               allowtransparency="true"
               allow="encrypted-media"

@@ -103,18 +103,21 @@ a:visited {
   }
 }
 
- /* @media screen and (min-width: 568px) {
-  .spotify .desktopbody {
-    display: block;
+@media screen and (min-width: 500px) {
+  .spotify div.desktopbody {
+    animation-play-state: paused;
+  }
+  #mini-player{
+    display: none;
   }
 }
 
-@media screen and (min-width: 375px) {
-  .spotify div.desktopbody {
+@media screen and (max-width: 500px) {
+  #full-body-player{
     display: none;
   }
+}
 
-} */
 
 #loginlogo {
   margin-top:240px;
