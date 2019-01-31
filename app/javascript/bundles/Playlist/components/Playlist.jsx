@@ -12,17 +12,21 @@ export default class Playlist extends Component {
             playlistId: this.props.playlistId || '',
             loading: false,
             latitude: null,
-            longitude: null
+            longitude: null,
+            playerWidth: window.innerWidth < 500 ? 450 : 0.8 * window.innerWidth,
+            playerHeight: window.innerHeight * 0.8
           }
 
   componentDidMount() {
     this.trackLocation()
     this.interval = setInterval(this.trackLocation, 60000);
     window.addEventListener('beforeunload', this.handleLeavePage)
+    window.addEventListener('resize', this.handleResize)
   }
 
   componentWillUnmount() {
     window.removeEventListener('beforeunload', this.handleLeavePage)
+    window.removeEventListener('resize', this.handleResize)
     clearInterval(this.interval)
   }
 
@@ -60,6 +64,14 @@ export default class Playlist extends Component {
     navigator.geolocation.getCurrentPosition(success, error, options)
   }
 
+  handleResize = () => {
+    const { innerHeight, innerWidth } = window
+    this.setState({
+      playerHeight: 0.8 * innerHeight,
+      playerWidth: innerWidth < 500 ? 450 : 0.8 * innerWidth
+    })
+  }
+
   generatePlaylist = () => {
     const { playlistType } = this.state
     this.setState({loading: true})
@@ -86,9 +98,21 @@ export default class Playlist extends Component {
     const { playlistId, playlistType, latitude, longitude } = this.state
     if(latitude && longitude){
       return(
-        <div>
-          <p>You are calling from {latitude}, {longitude}</p>
-          <select
+        <div className="spotifycontainer">
+          {
+            playlistId &&
+            <iframe
+              id="Spotifyplayer"
+              className="spotify-player"
+              src={`https://open.spotify.com/embed/playlist/${playlistId}`}
+              width={this.state.playerWidth}
+              height={this.state.playerHeight}
+              frameBorder="2"
+              allowtransparency="true"
+              allow="encrypted-media"
+            ></iframe>
+          }
+          <select name="dropdwn"
             onChange={this.handleChange}
             value={playlistType}
           >
@@ -96,20 +120,7 @@ export default class Playlist extends Component {
             <option value="party">Party</option>
             <option value="chill"> Chill</option>
           </select>
-
-          {
-            playlistId &&
-            <iframe
-              src={`https://open.spotify.com/embed/playlist/${playlistId}`}
-              width="300"
-              height="380"
-              frameBorder="2"
-              allowtransparency="true"
-              allow="encrypted-media"
-            ></iframe>
-          }
-
-          <button onClick={ playlistId ? this.refreshPlaylist : this.generatePlaylist }>
+          <button onClick={ playlistId ? this.refreshPlaylist : this.generatePlaylist } id="refreshbtn">
             {
               this.state.loading ? 'Loading...' :
               this.state.playlistId ? 'Refresh Playlist' : 'Generate Playlist'
