@@ -16,9 +16,9 @@ class User < ApplicationRecord
   #   end
   # end
 
-  has_many :user_tracks
+  has_many :user_tracks, dependent: :destroy
   has_many :tracks, through: :user_tracks
-  has_one :playlist
+  has_one :playlist, dependent: :destroy
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
