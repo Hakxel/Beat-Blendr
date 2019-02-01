@@ -43,14 +43,16 @@
     <% end %>
   </div>
   <div class="desktopbody">
-    <div id="full-body-player">
-      <%= react_component 'Playlist',
-          props:  {
-                    playlistId:   current_user.playlist&.playlist_id,
-                    playlistType: current_user.playlist&.playlist_type
-                  }
-      %>
-    </div>
+    <% if current_user %>
+      <div id="full-body-player">
+        <%= react_component 'Playlist',
+            props:  {
+                      playlistId:   current_user.playlist&.playlist_id,
+                      playlistType: current_user.playlist&.playlist_type
+                    }
+        %>
+      </div>
+    <% end %>
     <img id="bblogo" src="https://i.imgur.com/Vux0PdI.png"/>
 
   </div>
