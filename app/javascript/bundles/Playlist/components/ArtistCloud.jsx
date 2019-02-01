@@ -1,8 +1,7 @@
+import React from 'react'
 import TagCloud from 'react-tag-cloud';
-import randomColor from 'randomcolor';
 
-export default class ArtistCloud extends Component {
-
+export default class ArtistCloud extends React.Component {
   render() {
     return (
       <TagCloud
@@ -11,17 +10,15 @@ export default class ArtistCloud extends Component {
           fontSize: 30,
           fontWeight: 'bold',
           fontStyle: 'italic',
-          color: () => randomColor(),
+          color: 'green',
           padding: 5,
           width: '100%',
           height: '100%'
         }}>
-        //loop artist props here like in Friends and Family search results
-        <div style={{fontSize: 50}}>react</div>
-        <div style={{color: 'green'}}>tag</div>
-        <div rotate={90}>cloud</div>
-        ...
+        {this.props.artists.map(artist => {
+          return <div style={{fontSize: 50}}>{artist}</div>
+        })}
       </TagCloud>
-    });
+    );
   }
 }

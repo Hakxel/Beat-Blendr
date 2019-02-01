@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import ArtistCloud from '/ArtistCloud'
+import ArtistCloud from './ArtistCloud'
 
 const csrfHeaders = {
   'X-Requested-With': 'XMLHttpRequest',
@@ -100,6 +100,7 @@ export default class Playlist extends Component {
     if(latitude && longitude){
       return(
         <div className="spotifycontainer">
+          <ArtistCloud artists={this.props.artists} />
           {
             playlistId &&
             <iframe

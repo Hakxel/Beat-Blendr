@@ -1,6 +1,9 @@
 class PagesController < ApplicationController
   def home
-    @playlist = current_user.playlist if user_signed_in?
+    if user_signed_in?
+      @playlist = current_user.playlist
+      @artists  = current_user.tracks.pluck(:artist)
+    end
   end
 
   def show
