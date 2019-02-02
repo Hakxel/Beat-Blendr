@@ -13,7 +13,7 @@ class PlaylistsController < ApplicationController
     playlist = current_user.create_playlist(
       playlist_id: playlist_id,
       playlist_type: params[:playlistType],
-      range: params[:range] || 100
+      range: params[:range]
     )
     tracks = []
     User.near([current_user.latitude, current_user.longitude], (current_user.playlist.range / 5280))

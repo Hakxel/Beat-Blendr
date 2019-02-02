@@ -14,7 +14,8 @@ export default class Playlist extends Component {
             latitude: null,
             longitude: null,
             playerWidth: window.innerWidth < 500 ? 450 : 0.7465 * window.innerWidth,
-            playerHeight: window.innerHeight * 0.4
+            playerHeight: window.innerHeight * 0.4,
+            range: this.props.range || 100
           }
 
   componentDidMount() {
@@ -86,7 +87,6 @@ export default class Playlist extends Component {
   }
 
   refreshPlaylist = (event) => {
-    event.preventDefault()
     this.setState({ loading: true })
     axios.delete('/playlist.json').then( _ => this.generatePlaylist() )
   }
