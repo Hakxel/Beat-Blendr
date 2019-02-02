@@ -100,7 +100,6 @@ export default class Playlist extends Component {
     if(latitude && longitude){
       return(
         <div className="spotifycontainer">
-          <ArtistCloud artists={this.props.artists} />
           {
             playlistId &&
             <iframe
@@ -113,6 +112,9 @@ export default class Playlist extends Component {
               allowtransparency="true"
               allow="encrypted-media"
             ></iframe>
+          }
+          {
+          !playlistId && <ArtistCloud artists={this.props.artists} />
           }
           <select name="dropdwn"
             onChange={this.handleChange}

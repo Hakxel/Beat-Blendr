@@ -4,7 +4,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = User.from_omniauth(request.env['omniauth.auth'])
     @user.refresh_my_token if @user.token_is_expired?
 
-    top_tracks_response = HTTParty.get("https://api.spotify.com/v1/me/top/tracks",
+    top_tracks_response = HTTParty.get("https://api.spotify.com/v1/me/top/tracks/?limit=25",
                    headers: headers)
 
     track_ids = []
