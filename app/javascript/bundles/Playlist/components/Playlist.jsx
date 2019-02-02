@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import RangeSlider from './RangeSlider'
 
 const csrfHeaders = {
   'X-Requested-With': 'XMLHttpRequest',
@@ -16,7 +15,7 @@ export default class Playlist extends Component {
             longitude: null,
             playerWidth: window.innerWidth < 500 ? 450 : 0.8 * window.innerWidth,
             playerHeight: window.innerHeight * 0.8,
-            range: this.props.generationRange
+            range: (this.props.generationRange || 100)
           }
 
   componentDidMount() {
@@ -96,6 +95,10 @@ export default class Playlist extends Component {
     this.setState({ playlistType: event.target.value })
   }
 
+  handleRangeChange = event => {
+    this.setState({ range: event.target.value })
+  }
+
   render(){
     const { playlistId, playlistType, latitude, longitude } = this.state
     if(latitude && longitude){
@@ -122,13 +125,21 @@ export default class Playlist extends Component {
             <option value="party">Party</option>
             <option value="chill"> Chill</option>
           </select>
+          <div>
+            <p>Select distance:</p>
+            <div>
+              <input type="range" id="range-input" name="distance"
+                min="0" max="2500" step="15" value={this.state.range} onChange={this.handleRangeChange}/>
+              <p>{this.state.range}</p>
+              <label for="distance">Ft</label>
+            </div>
+          </div>
           <button onClick={ playlistId ? this.refreshPlaylist : this.generatePlaylist } id="refreshbtn">
             {
               this.state.loading ? 'Loading...' :
               this.state.playlistId ? 'Refresh Playlist' : 'Generate Playlist'
             }
           </button>
-          <RangeSlider range={this.state.range} />
         </div>
       )
     }else{
