@@ -24,7 +24,7 @@ export default class ArtistCloud extends Component {
     return (
       <div className='app-outer desktopbody'>
         <div className='app-inner'>
-          <h1>Users near you listen to...</h1>
+          <h1>Currently sharing tracks by...</h1>
           <TagCloud
             className='tag-cloud'
             style={{
