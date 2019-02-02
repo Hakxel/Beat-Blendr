@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import ArtistCloud from './ArtistCloud'
 
 const csrfHeaders = {
   'X-Requested-With': 'XMLHttpRequest',
@@ -118,7 +119,9 @@ export default class Playlist extends Component {
             ></iframe>
           }
           <div className="playlist-control">
-
+            {
+            !playlistId && <ArtistCloud artists={this.props.artists} />
+            }
             <select name="dropdwn"
               onChange={this.handleChange}
               value={playlistType}

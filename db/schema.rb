@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2019_02_02_161820) do
     t.float "energy"
     t.float "speechiness"
     t.float "tempo"
+    t.string "artist"
   end
 
   create_table "user_tracks", force: :cascade do |t|
