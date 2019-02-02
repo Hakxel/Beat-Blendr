@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import RangeSlider from './RangeSlider'
 
 const csrfHeaders = {
   'X-Requested-With': 'XMLHttpRequest',
@@ -14,7 +15,8 @@ export default class Playlist extends Component {
             latitude: null,
             longitude: null,
             playerWidth: window.innerWidth < 500 ? 450 : 0.8 * window.innerWidth,
-            playerHeight: window.innerHeight * 0.8
+            playerHeight: window.innerHeight * 0.8,
+            range: this.props.generationRange
           }
 
   componentDidMount() {
@@ -126,6 +128,7 @@ export default class Playlist extends Component {
               this.state.playlistId ? 'Refresh Playlist' : 'Generate Playlist'
             }
           </button>
+          <RangeSlider range={this.state.range} />
         </div>
       )
     }else{
