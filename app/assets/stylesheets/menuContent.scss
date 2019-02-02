@@ -1,7 +1,63 @@
 .grandMenu{
-  background-color: #3B3B3B;
+  background-image: linear-gradient(#313233, #555656);
   height: 100vh;
   }
   .grandMenu:below{
-    background-color: #3B3B3B;
+    background-image: linear-gradient(#313233, #555656);
+  }
+
+.cheeseburger-menu-outer{
+  height: 91vh;
+  min-width: 24.9vw;
+}
+
+
+.cheeseburger-menu-inner{
+}
+
+p {
+  padding:20px;
+}
+  .menu--main {
+    bottom: 0;
+    height: 70px;
+    text-align: right;
+
+    li {
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      padding: 25px 20px;
+      margin-right: -4px;  // get rid of spacing between list items
+      transition: all 0.2s;
+      width:89%;
+
+      &:hover {
+      }
+      &:hover .sub-menu {
+        max-height: 400px;
+        visibility: visible;
+        bottom: 100%;  // align to top of parent element
+        transition: all 0.2s linear;
+        background-color: none;
+        width:280px;
+      }
+    }
+    .sub-menu {
+      display: block;
+      visibility: hidden;
+      // position: absolute;
+      left: 0;
+      box-shadow: none;
+      max-height: 0;
+      width: 100px;
+
+      overflow: hidden;
+
+      li {
+        display: block;
+        background:none;
+        background-color: none;
+      }
+    }
   }

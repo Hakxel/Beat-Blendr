@@ -1,11 +1,9 @@
-
-#Spotifyplayer{
-  border-style: none;
-}
-
 .spotifycontainer{
-text-align: center;
-display: inline-block;
+  text-align: center;
+  align-items: center;
+}
+.spotify-player{
+opacity: 0.77;
 }
 
 #refreshbtn{
@@ -29,7 +27,6 @@ select[name="dropdwn"] {
   width:90px;
   border-radius: 10px;
   padding: 10px;
-
 
     option{
     color: purple;

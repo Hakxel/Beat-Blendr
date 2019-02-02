@@ -13,7 +13,7 @@ export default class Playlist extends Component {
             loading: false,
             latitude: null,
             longitude: null,
-            playerWidth: window.innerWidth < 500 ? 450 : 0.8 * window.innerWidth,
+            playerWidth: window.innerWidth < 500 ? 450 : 0.7465 * window.innerWidth,
             playerHeight: window.innerHeight * 0.8
           }
 
@@ -107,7 +107,7 @@ export default class Playlist extends Component {
               src={`https://open.spotify.com/embed/playlist/${playlistId}`}
               width={this.state.playerWidth}
               height={this.state.playerHeight}
-              frameBorder="2"
+              frameBorder="0"
               allowtransparency="true"
               allow="encrypted-media"
             ></iframe>
