@@ -13,9 +13,8 @@ export default class Playlist extends Component {
             loading: false,
             latitude: null,
             longitude: null,
-            playerWidth: window.innerWidth < 500 ? 450 : 0.8 * window.innerWidth,
-            playerHeight: window.innerHeight * 0.8,
-            range: this.props.range || 100
+            playerWidth: window.innerWidth < 500 ? 450 : 0.7465 * window.innerWidth,
+            playerHeight: window.innerHeight * 0.4
           }
 
   componentDidMount() {
@@ -113,7 +112,7 @@ export default class Playlist extends Component {
               src={`https://open.spotify.com/embed/playlist/${playlistId}`}
               width={this.state.playerWidth}
               height={this.state.playerHeight}
-              frameBorder="2"
+              frameBorder="0"
               allowtransparency="true"
               allow="encrypted-media"
             ></iframe>
@@ -128,6 +127,12 @@ export default class Playlist extends Component {
               <option value="party">Party</option>
               <option value="chill"> Chill</option>
             </select>
+            <button onClick={ playlistId ? this.refreshPlaylist : this.generatePlaylist } id="refreshbtn">
+              {
+                this.state.loading ? 'Loading...' :
+                this.state.playlistId ? 'Refresh Playlist' : 'Generate Playlist'
+              }
+            </button>
             <div>
               <p>Select distance:</p>
               <div>
@@ -137,12 +142,6 @@ export default class Playlist extends Component {
                 <label for="distance">Ft</label>
               </div>
             </div>
-            <button onClick={ playlistId ? this.refreshPlaylist : this.generatePlaylist } id="refreshbtn">
-              {
-                this.state.loading ? 'Loading...' :
-                this.state.playlistId ? 'Refresh Playlist' : 'Generate Playlist'
-              }
-            </button>
           </div>
         </div>
       )
