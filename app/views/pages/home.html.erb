@@ -17,7 +17,7 @@
            props:  {
                      playlistId:   current_user.playlist&.playlist_id,
                      playlistType: current_user.playlist&.playlist_type,
-                     range: current_user.playlist&.range || 100
+                     range: current_user.playlist&.range
                    }
        %>
      </div>
@@ -35,8 +35,6 @@
            </li>
        </div>
      </div>
-     <% if current_user.playlist %>
-     <% end %>
    <% else %>
      <img id="loginlogo" src="https://i.imgur.com/xWrAxYe.png"/>
      <br>
@@ -50,7 +48,7 @@
            props:  {
                      playlistId:   current_user.playlist&.playlist_id,
                      playlistType: current_user.playlist&.playlist_type,
-                     range:        current_user.playlist&.range || 100
+                     range:        current_user.playlist&.range
                    }
        %>
      </div>
