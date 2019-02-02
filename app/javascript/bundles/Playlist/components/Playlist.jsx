@@ -15,7 +15,7 @@ export default class Playlist extends Component {
             longitude: null,
             playerWidth: window.innerWidth < 500 ? 450 : 0.8 * window.innerWidth,
             playerHeight: window.innerHeight * 0.8,
-            range: (this.props.generationRange || 100)
+            range: this.props.range
           }
 
   componentDidMount() {
@@ -74,19 +74,20 @@ export default class Playlist extends Component {
   }
 
   generatePlaylist = () => {
-    const { playlistType } = this.state
+    const { playlistType, range } = this.state
     this.setState({loading: true})
-    axios.post('/playlist.json', { playlistType })
+    axios.post('/playlist.json', { playlistType, range })
       .then(response => {
         this.setState({
           playlistId:   response.data.playlistId,
           playlistType: response.data.playlistType,
-          loading: false
+          loading: false,
         })
       })
   }
 
-  refreshPlaylist = () => {
+  refreshPlaylist = (event) => {
+    event.preventDefault()
     this.setState({ loading: true })
     axios.delete('/playlist.json').then( _ => this.generatePlaylist() )
   }
@@ -129,7 +130,7 @@ export default class Playlist extends Component {
             <p>Select distance:</p>
             <div>
               <input type="range" id="range-input" name="distance"
-                min="0" max="2500" step="15" value={this.state.range} onChange={this.handleRangeChange}/>
+                min="0" max="2640" step="10" value={this.state.range} onChange={this.handleRangeChange}/>
               <p>{this.state.range}</p>
               <label for="distance">Ft</label>
             </div>

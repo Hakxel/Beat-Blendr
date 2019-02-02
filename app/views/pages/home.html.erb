@@ -16,7 +16,8 @@
        <%= react_component 'Playlist',
            props:  {
                      playlistId:   current_user.playlist&.playlist_id,
-                     playlistType: current_user.playlist&.playlist_type
+                     playlistType: current_user.playlist&.playlist_type,
+                     range: current_user.playlist&.range || 100
                    }
        %>
      </div>
@@ -48,7 +49,8 @@
        <%= react_component 'Playlist',
            props:  {
                      playlistId:   current_user.playlist&.playlist_id,
-                     playlistType: current_user.playlist&.playlist_type
+                     playlistType: current_user.playlist&.playlist_type,
+                     range:        current_user.playlist&.range || 100
                    }
        %>
      </div>
