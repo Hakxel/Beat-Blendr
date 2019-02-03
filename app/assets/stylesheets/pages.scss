@@ -209,9 +209,16 @@ a:visited {
 }
 
 #left{
-order:1;
-
+  order: 1;
 }
+
+#left img{
+  width: 50px;
+  height: auto;
+  margin-left: 10px;
+  margin-top: 7px;
+}
+
 #right{
 order:2;
 align-items: center;

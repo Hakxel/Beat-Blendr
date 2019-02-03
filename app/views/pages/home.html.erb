@@ -24,7 +24,12 @@
       <p>Made possible with </p>
       <%=image_tag('Spotify_Logo_RGB_Green.png', class: "spotifyloginlogo") %>
       <div id="userbox">
-        <div id="left"><%= current_user.image ? image_tag("#{current_user.image}", class: "usericon") : (asset_path ('icon-location-100.png'))%>
+        <div id="left">
+          <% if current_user.image %>
+            <%= image_tag("#{current_user.image}", class: "usericon") %>
+          <% else %>
+            <img src="https://i.imgur.com/xWrAxYe.png"/>
+          <% end %>
         </div>
         <div id="right">
           <div className="nav">
