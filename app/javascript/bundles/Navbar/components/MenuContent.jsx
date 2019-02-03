@@ -25,9 +25,9 @@ link.click();
           <div className="textinsidepop">
             <p>Welcome to Beat Blendr!</p>
             <p>To get started just hit the generate Playlist and we will provide you with what is popular near you, based on who is near you! Don't worry, this is done completely anonymously.</p>
-            <ul class='menu--main'>
+            <ul className='menu--main'>
               <li>Settings
-                <ul class='sub-menu'>
+                <ul className='sub-menu'>
                   <li>Change E-mail</li>
                   <li>Unlink Spotify</li>
                 </ul>
