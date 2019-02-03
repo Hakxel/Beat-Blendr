@@ -134,7 +134,7 @@ export default class Playlist extends Component {
               }
             </button>
             <div>
-              <p>Select distance: {this.state.range}<label for="distance"> Ft</label></p>
+              <p>Select distance: </p>
               <div>
                 <input type="range" id="range-input" name="distance"
                   min="100" max="26400" step="100" value={this.state.range} onChange={this.handleRangeChange}/>
