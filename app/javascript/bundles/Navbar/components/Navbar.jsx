@@ -31,13 +31,13 @@ class Navbar extends Component {
         <HamburgerMenu
           isOpen={this.state.menuOpen}
           menuClicked={this.openMenu.bind(this)}
-          width={32}
-          height={24}
-          strokeWidth={2}
+          width={30}
+          height={18}
+          strokeWidth={0}
           rotate={0}
           color="white"
           borderRadius={0}
-          animationDuration={0.5} />
+          animationDuration={.5} />
       </div>
     )
   }

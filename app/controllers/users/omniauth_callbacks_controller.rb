@@ -4,22 +4,25 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = User.from_omniauth(request.env['omniauth.auth'])
     @user.refresh_my_token if @user.token_is_expired?
 
-    top_response = HTTParty.get("https://api.spotify.com/v1/me/top/tracks",
-                   headers: { "Authorization" => "Bearer #{@user.token}"})
+    top_tracks_response = HTTParty.get("https://api.spotify.com/v1/me/top/tracks/?limit=25",
+                   headers: headers)
 
     track_ids = []
-    feature_ids = ''
-    top_response["items"].each do |item|
+    track_detail_ids = ''
+    top_tracks_response["items"].each do |item|
       track_ids << item["id"]
-      feature_ids = track_ids.join(",")
+      track_detail_ids = track_ids.join(",")
     end
 
-    features_response = HTTParty.get("https://api.spotify.com/v1/audio-features/?ids=#{feature_ids}",
-                        headers: { "Authorization" => "Bearer #{@user.token}"})
+    features_response = HTTParty.get("https://api.spotify.com/v1/audio-features/?ids=#{track_detail_ids}",
+                        headers: headers)
+
+    artists_response = HTTParty.get("https://api.spotify.com/v1/tracks/?ids=#{track_detail_ids}",
+                        headers: headers)
 
     UserTrack.where(user: @user).delete_all
 
-    top_response["items"].each do |item|
+    top_tracks_response["items"].each do |item|
       track = Track.find_or_create_by(
         name: item["name"],
         spotify_id: item["id"],
@@ -29,6 +32,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     features_response["audio_features"].each do |audio_features|
       Track.where(spotify_id: audio_features["id"]).update_all(danceability: audio_features["danceability"], energy: audio_features["energy"], speechiness: audio_features["speechiness"], tempo: audio_features["tempo"])
+    end
+
+    artists_response["tracks"].each do |tracks|
+      Track.where(spotify_id: tracks["id"]).update_all(artist: tracks["artists"].first["name"])
     end
 
     if @user.persisted?
@@ -42,6 +49,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def failure
     redirect_to root_path
+  end
+
+  private
+
+  def headers
+    { "Authorization" => "Bearer #{@user.token}" }
   end
 
 end
