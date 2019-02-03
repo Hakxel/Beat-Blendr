@@ -4,8 +4,9 @@ class Playlist < ApplicationRecord
 
   def as_json(options={})
     {
-      playlistId:   playlist_id,
-      playlistType: playlist_type
+      playlistId:       playlist_id,
+      playlistType:     playlist_type,
+      generationRange:  range
     }
   end
 end

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import ArtistCloud from './ArtistCloud'
 
 const csrfHeaders = {
   'X-Requested-With': 'XMLHttpRequest',
@@ -14,7 +15,8 @@ export default class Playlist extends Component {
             latitude: null,
             longitude: null,
             playerWidth: window.innerWidth < 500 ? 450 : 0.7465 * window.innerWidth,
-            playerHeight: window.innerHeight * 0.8
+            playerHeight: window.innerHeight * 0.4,
+            range: this.props.range || 100
           }
 
   componentDidMount() {
@@ -73,25 +75,29 @@ export default class Playlist extends Component {
   }
 
   generatePlaylist = () => {
-    const { playlistType } = this.state
+    const { playlistType, range } = this.state
     this.setState({loading: true})
-    axios.post('/playlist.json', { playlistType })
+    axios.post('/playlist.json', { playlistType, range })
       .then(response => {
         this.setState({
           playlistId:   response.data.playlistId,
           playlistType: response.data.playlistType,
-          loading: false
+          loading: false,
         })
       })
   }
 
-  refreshPlaylist = () => {
+  refreshPlaylist = (event) => {
     this.setState({ loading: true })
     axios.delete('/playlist.json').then( _ => this.generatePlaylist() )
   }
 
   handleChange = event => {
     this.setState({ playlistType: event.target.value })
+  }
+
+  handleRangeChange = event => {
+    this.setState({ range: event.target.value })
   }
 
   render(){
@@ -112,20 +118,34 @@ export default class Playlist extends Component {
               allow="encrypted-media"
             ></iframe>
           }
-          <select name="dropdwn"
-            onChange={this.handleChange}
-            value={playlistType}
-          >
-            <option value="all">All</option>
-            <option value="party">Party</option>
-            <option value="chill"> Chill</option>
-          </select>
-          <button onClick={ playlistId ? this.refreshPlaylist : this.generatePlaylist } id="refreshbtn">
+          <div className="playlist-control">
+            <select name="dropdwn"
+              onChange={this.handleChange}
+              value={playlistType}
+            >
+              <option value="all">All</option>
+              <option value="party">Party</option>
+              <option value="chill"> Chill</option>
+            </select>
+            <button onClick={ playlistId ? this.refreshPlaylist : this.generatePlaylist } id="refreshbtn">
+              {
+                this.state.loading ? 'Loading...' :
+                this.state.playlistId ? 'Refresh Playlist' : 'Generate Playlist'
+              }
+            </button>
+            <div>
+              <p>Select distance:</p>
+              <div>
+                <input type="range" id="range-input" name="distance"
+                  min="0" max="2640" step="10" value={this.state.range} onChange={this.handleRangeChange}/>
+                <p>{this.state.range}</p>
+                <label for="distance">Ft</label>
+              </div>
+            </div>
             {
-              this.state.loading ? 'Loading...' :
-              this.state.playlistId ? 'Refresh Playlist' : 'Generate Playlist'
+            !playlistId && <ArtistCloud artists={this.props.artists} />
             }
-          </button>
+          </div>
         </div>
       )
     }else{

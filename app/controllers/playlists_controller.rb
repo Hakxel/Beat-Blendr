@@ -12,10 +12,11 @@ class PlaylistsController < ApplicationController
     playlist_id = playlist_response['id']
     playlist = current_user.create_playlist(
       playlist_id: playlist_id,
-      playlist_type: params[:playlistType]
+      playlist_type: params[:playlistType],
+      range: params[:range]
     )
     tracks = []
-    User.near([current_user.latitude, current_user.longitude], 0.25)
+    User.near([current_user.latitude, current_user.longitude], (current_user.playlist.range / 5280))
         .each do |user|
           tracks << user.tracks
                         .send(params[:playlistType])
