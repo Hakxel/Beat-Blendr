@@ -15,7 +15,7 @@ export default class Playlist extends Component {
             latitude: null,
             longitude: null,
             playerWidth: window.innerWidth < 500 ? 450 : 0.7465 * window.innerWidth,
-            playerHeight: window.innerHeight * 0.4,
+            playerHeight: window.innerHeight * 0.7,
             range: this.props.range || 100
           }
 
@@ -69,7 +69,7 @@ export default class Playlist extends Component {
   handleResize = () => {
     const { innerHeight, innerWidth } = window
     this.setState({
-      playerHeight: 0.8 * innerHeight,
+      playerHeight: 0.7 * innerHeight,
       playerWidth: innerWidth < 500 ? 450 : 0.8 * innerWidth
     })
   }
@@ -134,7 +134,7 @@ export default class Playlist extends Component {
               }
             </button>
             <div>
-              <p>Select distance:</p>
+              <p>Select distance: </p>
               <div>
                 <input type="range" id="range-input" name="distance"
                   min="100" max="26400" step="100" value={this.state.range} onChange={this.handleRangeChange}/>

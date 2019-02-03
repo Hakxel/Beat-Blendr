@@ -19,6 +19,10 @@
                     }
         %>
       </div>
+      <br>
+      <br>
+      <p>Made possible with </p>
+      <%=image_tag('Spotify_Logo_RGB_Green.png', class: "spotifyloginlogo") %>
       <div id="userbox">
         <div id="left">
           <% if current_user.image %>
@@ -36,7 +40,10 @@
     <% else %>
       <img id="loginlogo" src="https://i.imgur.com/xWrAxYe.png"/>
       <br>
-      <%= link_to "sign in with spotify", user_spotify_omniauth_authorize_path %>
+      <%= link_to "sign in with", user_spotify_omniauth_authorize_path %>
+      <%= link_to user_spotify_omniauth_authorize_path do %>
+       <%=image_tag('Spotify_Logo_RGB_Green.png', class: "spotifyloginlogo") %>
+      <% end %>
     <% end %>
   </div>
   <div class="desktopbody">
