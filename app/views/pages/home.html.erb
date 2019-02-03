@@ -19,7 +19,7 @@
         %>
       </div>
       <div id="userbox">
-        <div id="left"><%= image_tag("#{current_user.image}", class: "usericon")%>
+        <div id="left"><%= current_user.image ? image_tag("#{current_user.image}", class: "usericon") : (asset_path ('icon-location-100.png'))%>
         </div>
         <div id="right">
           <div className="nav">
@@ -32,7 +32,10 @@
     <% else %>
       <img id="loginlogo" src="https://i.imgur.com/xWrAxYe.png"/>
       <br>
-      <%= link_to "sign in with spotify", user_spotify_omniauth_authorize_path %>
+      <%= link_to "sign in with", user_spotify_omniauth_authorize_path %>
+      <%= link_to user_spotify_omniauth_authorize_path do %>
+       <%=image_tag('Spotify_Logo_RGB_Green.png', class: "spotifyloginlogo") %>
+      <% end %>
     <% end %>
   </div>
   <div class="desktopbody">

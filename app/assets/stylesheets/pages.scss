@@ -15,6 +15,11 @@
   margin-left: 17vw;
 }
 
+.spotifyloginlogo{
+  width:auto;
+  height:80px;
+}
+
 #signOutButton{
   align-items: center;
   color: #1db954;
@@ -121,6 +126,9 @@ a:visited {
   }
   #full-body-player{
     display: none;
+  }
+  .spotify{
+  min-width: 117%;
   }
 }
 
