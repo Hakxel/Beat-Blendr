@@ -22,9 +22,9 @@ export default class ArtistCloud extends Component {
 
   render() {
     return (
-      <div className='app-outer desktopbody'>
-        <div className='app-inner'>
-          <h1>Currently sharing tracks by...</h1>
+      <div className='cloud-outer'>
+        <div className='cloud-inner'>
+          <h1>Users nearby listen to...</h1>
           <TagCloud
             className='tag-cloud'
             style={{
@@ -70,10 +70,3 @@ export default class ArtistCloud extends Component {
     );
   }
 }
-
-// {this.props.artists.map(artist => {
-//   return <div style={{color: 'green'}}>{artist}</div>
-// })}
-// <div style={{fontSize: 50}}>{this.props.artists[0]}</div>
-// <div style={{color: 'green'}}>{this.props.artists[2]}</div>
-// <div rotate={90}>{this.props.artists[1]}</div>
