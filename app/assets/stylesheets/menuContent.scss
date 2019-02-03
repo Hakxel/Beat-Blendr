@@ -21,7 +21,13 @@ p {
   .menu--main {
     bottom: 0;
     height: 70px;
-    text-align: right;
+    text-align: left;
+    position: absolute;
+    text-decoration: none;
+    padding: 1rem 0 0.5rem;
+    margin: 0 1.5rem;
+    text-transform: uppercase;
+    outline:none;
 
     li {
       display: inline-block;
@@ -42,11 +48,28 @@ p {
         background-color: none;
         width:280px;
       }
+      &::after {
+        transform: translateX(-50%) scaleX(1);
+        outline:none;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%) scaleX(0);
+        transform-origin: 50% 50%;
+        width: 100%;
+        height: 1px;
+        background-color:rgba(29,185,84,0.8);
+        transition: transform 250ms;
+        outline:none;
+      }
     }
     .sub-menu {
       display: block;
       visibility: hidden;
-      // position: absolute;
+      position: absolute;
       left: 0;
       box-shadow: none;
       max-height: 0;
