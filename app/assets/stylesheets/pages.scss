@@ -12,7 +12,7 @@
   flex-direction: column-reverse;
 }
 .hamburger{
-  margin-left: auto;
+  margin-right: auto;
 }
 
 .spotifyloginlogo{
@@ -88,7 +88,8 @@ a:visited {
   flex-direction: row;
   justify-content: center;
   min-height: 100%;
-  min-width: 100%;
+  // min-width: 100%;
+  min-width: 730px;
   position: relative;
   z-index: 0;
   background-color: rgba(black, .1);
@@ -106,11 +107,19 @@ a:visited {
     height: auto;
   }
 
+  #myvid {
+    display: none;
+  }
+
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 501px) {
   .spotify div.desktopbody {
     animation-play-state: paused;
+  }
+
+  .spotify{
+    min-width: 100%;
   }
   #mini-player{
     display: none;
@@ -120,9 +129,6 @@ a:visited {
 @media screen and (max-width: 500px) {
   .spotify div.desktopbody {
     animation-play-state: paused;
-  }
-  .desktopbody{
-    display:none;
   }
   #full-body-player{
     display: none;
@@ -154,17 +160,17 @@ a:visited {
 
 .signin{
   align-items: center;
-  background: rgba(black, 0.8);
   border:0px white solid;
   flex-direction: column;
   order: 1;
-  width: 479px;
+  width: 499px;
   height: 100vh;
   display: flex;
   animation: mymove 1s cubic-bezier(.5,.5,0,1);
   box-shadow: 3px 0px #1db954;
   animation-fill-mode: forwards;
   position: relative;
+
 }
 
 @keyframes mymove {

@@ -24,13 +24,9 @@ link.click();
           </div>
           <div className="textinsidepop">
             <p>Welcome to Beat Blendr!</p>
-<<<<<<< HEAD
-            <p>To get started just hit the generate Playlist and we will provide you with what is popular near you, based on who is near you! Don't worry, this is completely anonymous.</p>
+            <p>To get started just hit the Generate Playlist button and we will provide you with what is popular near you, based on who is near you! Don't worry, this is completely anonymous.</p>
+            <p></p><p></p><p>Click anywhere to continue</p>
             <ul class='menu--main'>
-=======
-            <p>To get started just hit the generate Playlist and we will provide you with what is popular near you, based on who is near you! Don't worry, this is done completely anonymously.</p>
-            <ul className='menu--main'>
->>>>>>> dfbd21cc2a98031bc0dcfed399447be9bb040498
               <li>Settings
                 <ul className='sub-menu'>
                   <li>Change E-mail</li>
