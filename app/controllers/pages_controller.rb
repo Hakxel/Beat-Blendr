@@ -7,9 +7,9 @@ class PagesController < ApplicationController
       User.near([current_user.latitude, current_user.longitude], 0.25).each do |user|
         user.tracks.pluck(:artist).each do |artist|
           artists << artist
-        end      
-      end      
-      @artists  = artists.uniq.shuffle
+        end
+      @artists  = artists.uniq.shuffle      
+      end
     end
   end
   def show
