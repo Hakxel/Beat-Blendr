@@ -16,7 +16,8 @@ export default class Playlist extends Component {
             longitude: null,
             playerWidth: window.innerWidth < 500 ? 450 : 0.7465 * window.innerWidth,
             playerHeight: window.innerHeight * 0.7,
-            range: this.props.range || 100
+            range: this.props.range || 100,
+            artists: []
           }
 
   componentDidMount() {
@@ -59,6 +60,8 @@ export default class Playlist extends Component {
           longitude: response.data.longitude
         })
       })
+      axios.get(`/artists.json?latitude=${latitude}&longitude=${longitude}`)
+        .then(response => this.setState({ artists: response.data }) )
     }
     const error = err => {
       console.warn(`ERROR(${err.code}): ${err.message}`)
@@ -143,7 +146,7 @@ export default class Playlist extends Component {
               </div>
             </div>
             {
-            !playlistId && <ArtistCloud artists={this.props.artists} />
+              !playlistId && this.state.artists.length > 0 && <ArtistCloud artists={this.state.artists} />
             }
           </div>
         </div>

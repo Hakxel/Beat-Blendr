@@ -14,12 +14,6 @@ const styles = {
 }
 
 export default class ArtistCloud extends Component {
-  componentDidMount() {
-    setInterval(() => {
-      this.forceUpdate();
-    }, 3000);
-  }
-
   render() {
     return (
       <div className='cloud-outer'>
@@ -29,8 +23,6 @@ export default class ArtistCloud extends Component {
             className='tag-cloud'
             style={{
               fontFamily: 'sans-serif',
-              //may use this style to randomize font size
-              //fontSize: () => Math.round(Math.random() * 50) + 16,
               fontSize: 30,
               color: () => randomColor({
                 hue: 'blue'
