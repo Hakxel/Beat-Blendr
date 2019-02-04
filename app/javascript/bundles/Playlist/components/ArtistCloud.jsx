@@ -14,6 +14,14 @@ const styles = {
 }
 
 export default class ArtistCloud extends Component {
+  componentDidMount(){
+    this.interval = setInterval(this.forceUpdate, 3000)
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.interval)
+  }
+  
   render() {
     return (
       <div className='cloud-outer'>
