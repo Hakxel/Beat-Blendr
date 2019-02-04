@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :locations, only: [:create]
   resource :playlist, only: [:create, :destroy]
   resources :pages, only: [:home, :show]
+  resources :artists, only: [:index]
 end

@@ -15,7 +15,8 @@
             props:  {
                       playlistId:   current_user.playlist&.playlist_id,
                       playlistType: current_user.playlist&.playlist_type,
-                      range:        current_user.playlist&.range
+                      range:        current_user.playlist&.range,
+                      artists:      @artists
                     }
         %>
       </div>
