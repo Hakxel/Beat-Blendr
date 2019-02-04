@@ -79,15 +79,20 @@ export default class Playlist extends Component {
 
   generatePlaylist = () => {
     const { playlistType, range } = this.state
+    console.log('before', this.state)
     this.setState({loading: true})
+    console.log('middle', this.state)
     axios.post('/playlist.json', { playlistType, range })
       .then(response => {
         this.setState({
           playlistId:   response.data.playlistId,
           playlistType: response.data.playlistType,
+          range:        response.data.generationRange,
           loading: false,
         })
+        console.log('afterResponse', this.state)
       })
+    console.log('end', this.state)
   }
 
   refreshPlaylist = (event) => {
@@ -142,7 +147,7 @@ export default class Playlist extends Component {
                 <input type="range" id="range-input" name="distance"
                   min="100" max="26400" step="100" value={this.state.range} onChange={this.handleRangeChange}/>
                 <br/>
-                <label for="distance"> {this.state.range} Feet ({(this.state.range/5280).toFixed(2)} miles)</label>
+                <label htmlFor="distance"> {this.state.range} Feet ({(this.state.range/5280).toFixed(2)} miles)</label>
               </div>
             </div>
             {
