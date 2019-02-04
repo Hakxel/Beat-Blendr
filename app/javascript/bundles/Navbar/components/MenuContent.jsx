@@ -24,8 +24,9 @@ link.click();
           </div>
           <div className="textinsidepop">
             <p>Welcome to Beat Blendr!</p>
-            <p>To get started just hit the Generate Playlist button and we will provide you with what is popular near you, based on who is near you! Don't worry, this is completely anonymous.</p>
-            <p></p><p></p><p>Click anywhere to continue</p>
+            <p>This is an app that creates and lets you listen to new playlists based on your current location and the people within a range of 5 miles or less.</p>
+            <p>In order to do that, we collect the favorite tracks of every user, including you, and anonymously mix them on the playlist of other users nearby.</p>
+            <p>To get started just hit the Generate Playlist button and we will provide you with what is popular near you, based on who is near you!</p>
             <ul className='menu--main'>
               <li>Settings
                 <ul className='sub-menu'>
