@@ -23,10 +23,19 @@ link.click();
             <button id="signOutButton" onClick={this.handleLogout}>Sign Out</button>
           </div>
           <div className="textinsidepop">
-            <p>Welcome to Beat Blendr!</p>
-            <p>This is an app that creates and lets you listen to new playlists based on your current location and the people within a range of 5 miles or less.</p>
-            <p>In order to do that, we collect the favorite tracks of every user, including you, and anonymously mix them on the playlist of other users nearby.</p>
-            <p>To get started just hit the Generate Playlist button and we will provide you with what is popular near you, based on who is near you!</p>
+            <p>Welcome!</p>
+            
+            <p>BeatBlendr is an app that lets you sample music based on the preferences of nearby users!</p>
+            
+            <p>With one click, create a new Spotify playlist containing the favorite tracks of users within your specified search radius.</p>
+            
+            <p>You can filter the BeatBlendr playlist generator to return danceable or relaxing music!</p>
+            
+            <p>Throwing a party? Having some friends over for dinner? Maybe you just want some new tunes blasting in your headphones.</p>
+            
+            <p>Whatever your occasion, BeatBlendr has you covered!</p>
+            
+            <p>To get started, just hit the Generate Playlist button.</p>
             <ul className='menu--main'>
               <li>Settings
                 <ul className='sub-menu'>
@@ -37,8 +46,6 @@ link.click();
             </ul>
           </div>
         </div>
-          <p className="hint">
-          </p>
       </div>
 
     )
