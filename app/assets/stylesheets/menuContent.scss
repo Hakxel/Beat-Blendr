@@ -15,8 +15,8 @@
 .cheeseburger-menu-inner{
 }
 
-p {
-  padding:20px;
+p, h4 {
+  padding:10px;
 }
   .menu--main {
     bottom: 0;
@@ -33,7 +33,7 @@ p {
       display: inline-block;
       position: relative;
       cursor: pointer;
-      padding: 25px 20px;
+      padding: 20px 20px;
       margin-right: -4px;  // get rid of spacing between list items
       transition: all 0.2s;
       width:89%;

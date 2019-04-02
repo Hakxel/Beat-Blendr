@@ -23,27 +23,12 @@ link.click();
             <button id="signOutButton" onClick={this.handleLogout}>Sign Out</button>
           </div>
           <div className="textinsidepop">
-            <p>Welcome!</p>
-            
+            <h4>Welcome!</h4>          
             <p>BeatBlendr is an app that lets you sample music based on the preferences of nearby users!</p>
-            
-            <p>With one click, create a new Spotify playlist containing the favorite tracks of users within your specified search radius.</p>
-            
-            <p>You can filter the BeatBlendr playlist generator to return danceable or relaxing music!</p>
-            
-            <p>Throwing a party? Having some friends over for dinner? Maybe you just want some new tunes blasting in your headphones.</p>
-            
-            <p>Whatever your occasion, BeatBlendr has you covered!</p>
-            
+            <p>With one click, create a new Spotify playlist containing the favorite tracks of users within your specified search radius.</p> 
+            <p>You can filter the BeatBlendr playlist generator to return danceable or relaxing music!</p>       
+            <p>Throwing a party? Having some friends over for dinner? Maybe you just want some new tunes blasting in your headphones. Whatever your occasion, BeatBlendr has you covered!</p>            
             <p>To get started, just hit the Generate Playlist button.</p>
-            <ul className='menu--main'>
-              <li>Settings
-                <ul className='sub-menu'>
-                  <li>Change E-mail</li>
-                  <li>Unlink Spotify</li>
-                </ul>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
