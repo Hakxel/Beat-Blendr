@@ -20,6 +20,14 @@
   height:80px;
 }
 
+.left-intro {
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+}
+
 #signOutButton{
   align-items: center;
   color: #1db954;
@@ -120,6 +128,9 @@ a:visited {
   z-index: -1;
 }
 
+.spotifycontainer {
+  padding-top: 1rem;
+}
 
 .signin{
   align-items: center;
@@ -236,6 +247,10 @@ padding: 2vw;
   }
 
   #myvid {
+    display: none;
+  }
+
+  .case-small {
     display: none;
   }
 }

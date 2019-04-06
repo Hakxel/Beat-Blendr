@@ -22,8 +22,12 @@
       </div>
       <br>
       <br>
-      <p>Made possible with </p>
-      <%=image_tag('Spotify_Logo_RGB_Green.png', class: "spotifyloginlogo") %>
+      <div class="case-small">
+        <div class="left-intro">
+          <p>Made possible with </p>
+          <%=image_tag('Spotify_Logo_RGB_Green.png', class: "spotifyloginlogo") %>
+        </div>
+      </div>
       <div id="userbox">
         <div id="left">
           <% if current_user.image %>

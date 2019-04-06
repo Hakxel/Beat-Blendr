@@ -1,17 +1,14 @@
-#range-input{
-  width: 25vw;
-}
 
 .tag-cloud {
-	flex: 1;
+  flex: 1;
 }
 
 .tag-cloud > div {
-	transition: 1.4s;
+  transition: 1.4s;
 }
 
 .cloud-outer {
-	align-items: center;
+  align-items: center;
 	// bottom: 0;
 	display: flex;
 	flex-direction: column;
@@ -41,11 +38,12 @@
   align-items: center;
 }
 .spotify-player{
-opacity: 0.77;
+  opacity: 0.77;
 }
 
 #refreshbtn{
   color: white;
+  background-color: green;
   border-radius: 10px;
   border-style: none;
   padding: 8px;
@@ -57,34 +55,65 @@ opacity: 0.77;
   width: 100px;
 }
 
-select[name="dropdwn"] {
-  color: green;
-  background-color: white;
-  text-decoration: none;
-  height: 25px;
-  width:90px;
-  border-radius: 10px;
-  padding: 10px;
-
-    option{
-    color: purple;
-    background-color: green;
-    }
+          
+video {
+  display: block;
 }
 
-@keyframes fade {
-   0% {
-      background-color: rgba(black, .0);
-   }
-   100%{
-      background-color: rgba(29,185,84, .85); border: .5px black solid;
-   }
- }
+video.signed-in {
+  display: none;
+}
 
- video {
-   display: block;
- }
+.playlist-control {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60vw;
+}
 
- video.signed-in {
-   display: none;
- }
+.type-select {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 15rem;
+  height: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.list-options {
+  width: 6rem;
+  height: 1.6rem;
+  border-radius: 10px;
+}
+
+.select-distance {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.distance-bar {
+  width: 80%;
+}
+
+#range-input {
+  width: 80%;
+}
+
+@media (max-width: 420px) {
+
+  .select-distance {
+    width: 100%
+  }
+
+  .distance-bar {
+    width: 100%
+  }
+
+  #range-input {
+    width: 100%
+  }
+}
+          

@@ -40,7 +40,7 @@ export default class ArtistCloud extends Component {
             <div
               style={{
                 fontFamily: 'serif',
-                fontSize: 40,
+                fontSize: '20%',
                 fontStyle: 'italic',
                 fontWeight: 'bold',
                 color: randomColor()
@@ -50,9 +50,9 @@ export default class ArtistCloud extends Component {
             <div style={styles.large}>{this.props.artists[3]}</div>
             <div style={styles.large}>{this.props.artists[4]}</div>
             <div style={{fontFamily: 'courier'}}>{this.props.artists[5]}</div>
-            <div style={{fontSize: 30}}>{this.props.artists[6]}</div>
+            <div style={{fontSize: '15%'}}>{this.props.artists[6]}</div>
             <div style={{fontStyle: 'italic'}}>{this.props.artists[7]}</div>
-            <div style={{fontWeight: 200}}>{this.props.artists[8]}</div>
+            <div style={{fontWeight: '30%'}}>{this.props.artists[8]}</div>
             <div style={{color: 'green'}}>{this.props.artists[9]}</div>
             <div>{this.props.artists[10]}</div>
             <div>{this.props.artists[11]}</div>

@@ -127,23 +127,25 @@ export default class Playlist extends Component {
             ></iframe>
           }
           <div className="playlist-control">
-            <select name="dropdwn"
-              onChange={this.handleChange}
-              value={playlistType}
-            >
-              <option value="all">All</option>
-              <option value="party">Party</option>
-              <option value="chill"> Chill</option>
-            </select>
-            <button onClick={ playlistId ? this.refreshPlaylist : this.generatePlaylist } id="refreshbtn">
-              {
-                this.state.loading ? 'Loading...' :
-                this.state.playlistId ? 'Refresh Playlist' : 'Generate Playlist'
-              }
-            </button>
-            <div>
+            <div className="type-select">
+              <select name="dropdown" className="list-options"
+                onChange={this.handleChange}
+                value={playlistType}
+              >
+                <option value="all">All</option>
+                <option value="party">Party</option>
+                <option value="chill"> Chill</option>
+              </select>
+              <button onClick={ playlistId ? this.refreshPlaylist : this.generatePlaylist } id="refreshbtn">
+                {
+                  this.state.loading ? 'Loading...' :
+                  this.state.playlistId ? 'Refresh Playlist' : 'Generate Playlist'
+                }
+              </button>
+            </div>
+            <div className="select-distance">
               <p>Select distance: </p>
-              <div>
+              <div className="distance-bar">
                 <input type="range" id="range-input" name="distance"
                   min="100" max="26400" step="100" value={this.state.range} onChange={this.handleRangeChange}/>
                 <br/>
@@ -151,7 +153,7 @@ export default class Playlist extends Component {
               </div>
             </div>
             {
-              !playlistId && this.state.artists.length > 0 && <ArtistCloud artists={this.state.artists} />
+              !playlistId && this.state.artists.length > 0 && <div className="artist-cloud"><ArtistCloud artists={this.state.artists} /></div>
             }
           </div>
         </div>
