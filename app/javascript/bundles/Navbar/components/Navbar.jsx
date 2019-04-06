@@ -8,7 +8,7 @@ class Navbar extends Component {
     super(props);
 
     this.state = {
-      menuOpen: true
+      menuOpen: false,
     };
   }
 

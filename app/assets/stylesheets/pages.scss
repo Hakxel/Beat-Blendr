@@ -87,10 +87,10 @@ a:visited {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  min-height: 100%;
-  // min-width: 100%;
-  min-width: 730px;
-  position: relative;
+  height: 100%;
+  width: 100%;
+  // min-width: 730px;
+  // position: relative;
   z-index: 0;
   background-color: rgba(black, .1);
 }
@@ -101,43 +101,6 @@ a:visited {
   margin-top:180px;
   margin-left:50px;
 }
-
-@media only screen and (max-width: 375px) {
-  #bblogo {
-    height: auto;
-  }
-
-  #myvid {
-    display: none;
-  }
-
-}
-
-@media screen and (min-width: 501px) {
-  .spotify div.desktopbody {
-    animation-play-state: paused;
-  }
-
-  .spotify{
-    min-width: 100%;
-  }
-  #mini-player{
-    display: none;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .spotify div.desktopbody {
-    animation-play-state: paused;
-  }
-  #full-body-player{
-    display: none;
-  }
-  .spotify{
-  min-width: 117%;
-  }
-}
-
 
 #loginlogo {
   margin-top:240px;
@@ -163,8 +126,9 @@ a:visited {
   border:0px white solid;
   flex-direction: column;
   order: 1;
-  width: 479px;
-  height: 100vh;
+  width: 25vw;
+  min-width: 18.8rem;
+  height: 100%;
   display: flex;
   animation: mymove 1s cubic-bezier(.5,.5,0,1);
   box-shadow: 3px 0px #1db954;
@@ -198,7 +162,8 @@ a:visited {
  }
 
 #userbox{
-  height: 70px;
+  height: 10vh;
+  min-height: 4rem;
   width: 100%;
   background-image: linear-gradient(#313233, #555656);
   color: white;
@@ -236,10 +201,10 @@ padding: 2vw;
   border:0px white solid;
   flex-direction: column;
   order: 2;
-  width: 1441px;
+  width: 75vw;
   display: flex;
   height: 100vh;
-  width: 100vw;
+  // width: 100vw;
   background-color: rgba(black, .5);
   animation: bgpulse 4s cubic-bezier(.5,.5,0,1) infinite;
 }
@@ -256,6 +221,52 @@ padding: 2vw;
     to {transform:rotate(360deg);}
     to {transform:rotate(720deg);}
 }
+
+@media only screen and (max-width: 420px) {
+  #bblogo {
+    height: auto;
+  }
+
+  .signin {
+    width: 100vw;
+  }
+
+  .desktopbody {
+    display: none;
+  }
+
+  #myvid {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 421px) {
+  .spotify div.desktopbody {
+    animation-play-state: paused;
+  }
+
+  .spotify {
+    min-width: 100%;
+  }
+
+  #mini-player {
+    display: none;
+  }
+}
+
+// @media screen and (max-width: 500px) {
+//   .spotify div.desktopbody {
+//     animation-play-state: paused;
+//   }
+
+//   #full-body-player {
+//     display: none;
+//   }
+
+//   .spotify {
+//     min-width: 117%;
+//   }
+// }
 
 
 /* // dont know what to do with this yet

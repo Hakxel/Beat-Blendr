@@ -26,76 +26,31 @@
   padding: 0;
 }
 
-
-.cheeseburger-menu-inner{
+.menu {
+  height: 100%;
+}
+.textinsidepop {
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
 }
 
-p {
-  padding:20px;
-}
-  .menu--main {
-    bottom: 0;
-    height: 70px;
-    text-align: left;
-    position: absolute;
-    text-decoration: none;
-    padding: 1rem 0 0.5rem;
-    margin: 0 1.5rem;
-    text-transform: uppercase;
-    outline:none;
-
-    li {
-      display: inline-block;
-      position: relative;
-      cursor: pointer;
-      padding: 25px 20px;
-      margin-right: -4px;  // get rid of spacing between list items
-      transition: all 0.2s;
-      width:89%;
-
-      &:hover {
-      }
-      &:hover .sub-menu {
-        max-height: 400px;
-        visibility: visible;
-        bottom: 100%;  // align to top of parent element
-        transition: all 0.2s linear;
-        background-color: none;
-        width:280px;
-      }
-      &::after {
-        transform: translateX(-50%) scaleX(1);
-        outline:none;
-      }
-      &::after {
-        content: '';
-        position: absolute;
-        left: 50%;
-        bottom: 0;
-        transform: translateX(-50%) scaleX(0);
-        transform-origin: 50% 50%;
-        width: 100%;
-        height: 1px;
-        background-color:rgba(29,185,84,0.8);
-        transition: transform 250ms;
-        outline:none;
-      }
-    }
-    .sub-menu {
-      display: block;
-      visibility: hidden;
-      position: absolute;
-      left: 0;
-      box-shadow: none;
-      max-height: 0;
-      width: 100px;
-
-      overflow: hidden;
-
-      li {
-        display: block;
-        background:none;
-        background-color: none;
-      }
-    }
+@media (max-width: 420px) {
+  .hamburguer {
+    height: 100vh
   }
+
+  .cheeseburger-menu-outer {
+    height: 90%;
+    min-width: 100vw;
+  }
+
+  .cheeseburger-menu-inner {
+    width: 100vw;
+  }
+  .grandMenu {
+    height: 100%;
+  }
+}

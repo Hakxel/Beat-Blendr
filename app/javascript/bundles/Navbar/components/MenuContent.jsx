@@ -1,19 +1,20 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 
 
 class MenuContent extends Component {
   constructor(props) {
     super(props)
   }
-   handleLogout = () => {
-const link = document.createElement('a');
-link.setAttribute('href', '/users/sign_out');
-link.setAttribute('rel', 'nofollow');
-link.setAttribute('data-method', 'delete');
-document.body.appendChild(link);
-link.click();
-}
+
+  handleLogout = () => {
+    const link = document.createElement('a');
+    link.setAttribute('href', '/users/sign_out');
+    link.setAttribute('rel', 'nofollow');
+    link.setAttribute('data-method', 'delete');
+    document.body.appendChild(link);
+    link.click();
+  }
 
   render() {
     return (
