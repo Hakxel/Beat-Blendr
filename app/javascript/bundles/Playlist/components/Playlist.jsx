@@ -73,7 +73,7 @@ export default class Playlist extends Component {
     const { innerHeight, innerWidth } = window
     this.setState({
       playerHeight: 0.7 * innerHeight,
-      playerWidth: innerWidth < 500 ? 450 : 0.8 * innerWidth
+      playerWidth: innerWidth < 500 ? 420 : 0.8 * innerWidth
     })
   }
 
@@ -113,51 +113,55 @@ export default class Playlist extends Component {
     if(latitude && longitude){
       return(
         <div className="spotifycontainer">
-          {
-            playlistId &&
-            <iframe
-              id="Spotifyplayer"
-              className="spotify-player"
-              src={`https://open.spotify.com/embed/playlist/${playlistId}`}
-              width={this.state.playerWidth}
-              height={this.state.playerHeight}
-              frameBorder="0"
-              allowtransparency="true"
-              allow="encrypted-media"
-            ></iframe>
-          }
+          <div className="player-frame">
+            {
+              playlistId &&
+              <iframe
+                id="Spotifyplayer"
+                className="spotify-player"
+                src={`https://open.spotify.com/embed/playlist/${playlistId}`}
+                width={'100%'}
+                height={'100%'}
+                frameBorder="0"
+                allowtransparency="true"
+                allow="encrypted-media"
+              ></iframe>
+            }          
+          </div>
           <div className="playlist-control">
-            <select name="dropdwn"
-              onChange={this.handleChange}
-              value={playlistType}
-            >
-              <option value="all">All</option>
-              <option value="party">Party</option>
-              <option value="chill"> Chill</option>
-            </select>
-            <button onClick={ playlistId ? this.refreshPlaylist : this.generatePlaylist } id="refreshbtn">
-              {
-                this.state.loading ? 'Loading...' :
-                this.state.playlistId ? 'Refresh Playlist' : 'Generate Playlist'
-              }
-            </button>
-            <div>
+            <div className="type-select">
+              <select name="dropdown" className="list-options"
+                onChange={this.handleChange}
+                value={playlistType}
+              >
+                <option value="all">All</option>
+                <option value="party">Party</option>
+                <option value="chill"> Chill</option>
+              </select>
+              <button onClick={ playlistId ? this.refreshPlaylist : this.generatePlaylist } id="refreshbtn">
+                {
+                  this.state.loading ? 'Loading...' :
+                  this.state.playlistId ? 'Refresh Playlist' : 'Generate Playlist'
+                }
+              </button>
+            </div>
+            <div className="select-distance">
               <p>Select distance: </p>
-              <div>
+              <div className="distance-bar">
                 <input type="range" id="range-input" name="distance"
                   min="100" max="26400" step="100" value={this.state.range} onChange={this.handleRangeChange}/>
                 <br/>
                 <label htmlFor="distance"> {this.state.range} Feet ({(this.state.range/5280).toFixed(2)} miles)</label>
               </div>
             </div>
-            {
-              !playlistId && this.state.artists.length > 0 && <ArtistCloud artists={this.state.artists} />
-            }
           </div>
+          {
+            !playlistId && this.state.artists.length > 0 && <div className="artist-cloud"><ArtistCloud artists={this.state.artists} /></div>
+          }
         </div>
       )
     }else{
-      return <p>Please wait while we find your location...</p>
+      return <p className="location-notice">Please wait while we find your location...</p>
     }
   }
 }

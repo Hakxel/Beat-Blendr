@@ -1,51 +1,57 @@
-#range-input{
-  width: 25vw;
-}
 
 .tag-cloud {
-	flex: 1;
+  flex: 1;
+  width: 100%;
+  margin: auto;
 }
 
 .tag-cloud > div {
-	transition: 1.4s;
+  transition: 1.4s;
 }
 
 .cloud-outer {
-	align-items: center;
-	// bottom: 0;
+  align-items: center;
 	display: flex;
 	flex-direction: column;
-	// justify-content: flex-start;
-	// left: 0;
-	position: absolute;
-	right: 0;
-	// top: 0;
-  height: 100%;
-  max-width: 60vw;
-  max-height: 40vw;
-  width: 100%;
+	justify-content: center;
+  height: 70vh;
+  max-width: 100%;
+  max-height: 100%;
+  width: 70vw;
+  margin: auto;
 }
 
 .cloud-inner {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 100%;
-  max-height: 40vw;
-  padding-top: 5vh;
-  margin-right: 10em;
+  height: 80%;
+  width: 90%;
+  max-height: 80%;
+  min-height: 50vh;
+  padding-top: 1rem;
+  margin: auto;
+  // justify-content: center;
 }
 
 .spotifycontainer{
   text-align: center;
   align-items: center;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-between;
+  height: 100vh;
 }
 .spotify-player{
-opacity: 0.77;
+  opacity: 0.77;
+  width: 70vw;
+  height: 70vh;
 }
 
 #refreshbtn{
   color: white;
+  background-color: green;
   border-radius: 10px;
   border-style: none;
   padding: 8px;
@@ -56,35 +62,91 @@ opacity: 0.77;
   height: 28px;
   width: 100px;
 }
-
-select[name="dropdwn"] {
-  color: green;
-  background-color: white;
-  text-decoration: none;
-  height: 25px;
-  width:90px;
-  border-radius: 10px;
-  padding: 10px;
-
-    option{
-    color: purple;
-    background-color: green;
-    }
+          
+video {
+  display: block;
 }
 
-@keyframes fade {
-   0% {
-      background-color: rgba(black, .0);
-   }
-   100%{
-      background-color: rgba(29,185,84, .85); border: .5px black solid;
-   }
- }
+video.signed-in {
+  display: none;
+}
 
- video {
-   display: block;
- }
+.playlist-control {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60vw;
+  margin: auto;
+  padding: 10px;
+}
 
- video.signed-in {
-   display: none;
- }
+.type-select {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 15rem;
+  height: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.list-options {
+  width: 6rem;
+  height: 1.6rem;
+  border-radius: 10px;
+}
+
+.select-distance {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.distance-bar {
+  width: 80%;
+}
+
+#range-input {
+  width: 80%;
+}
+
+@media (max-width: 420px) {
+  .spotifycontainer {
+    height: 88vh;
+    width: 98vw;
+  }
+  
+  .select-distance {
+    width: 100%
+  }
+
+  .distance-bar {
+    width: 100%
+  }
+
+  #range-input {
+    width: 100%
+  }
+
+  .cloud-outer {
+    width: 90vw;
+    height: 60vh;
+  }
+
+  .cloud-inner {
+    width: 90vw;
+    height: 50vh;
+  }
+
+  .spotify-player {
+    width: 94vw;
+    height: 65vh;
+  }
+
+  .location-notice {
+    margin-top: 2rem;
+  }
+
+}
+          

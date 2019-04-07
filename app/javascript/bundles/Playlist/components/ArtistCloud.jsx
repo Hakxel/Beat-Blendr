@@ -4,12 +4,12 @@ import randomColor from 'randomcolor'
 
 const styles = {
   large: {
-    fontSize: 60,
+    fontSize: 48,
     fontWeight: 'bold'
   },
   small: {
     opacity: 0.7,
-    fontSize: 16
+    fontSize: 32,
   }
 }
 
@@ -31,7 +31,7 @@ export default class ArtistCloud extends Component {
             className='tag-cloud'
             style={{
               fontFamily: 'sans-serif',
-              fontSize: 30,
+              fontSize: '20%',
               color: () => randomColor({
                 hue: 'blue'
               }),
@@ -40,7 +40,7 @@ export default class ArtistCloud extends Component {
             <div
               style={{
                 fontFamily: 'serif',
-                fontSize: 40,
+                fontSize: '20%',
                 fontStyle: 'italic',
                 fontWeight: 'bold',
                 color: randomColor()
@@ -50,9 +50,9 @@ export default class ArtistCloud extends Component {
             <div style={styles.large}>{this.props.artists[3]}</div>
             <div style={styles.large}>{this.props.artists[4]}</div>
             <div style={{fontFamily: 'courier'}}>{this.props.artists[5]}</div>
-            <div style={{fontSize: 30}}>{this.props.artists[6]}</div>
+            <div style={{fontSize: '15%'}}>{this.props.artists[6]}</div>
             <div style={{fontStyle: 'italic'}}>{this.props.artists[7]}</div>
-            <div style={{fontWeight: 200}}>{this.props.artists[8]}</div>
+            <div style={{fontWeight: '30%'}}>{this.props.artists[8]}</div>
             <div style={{color: 'green'}}>{this.props.artists[9]}</div>
             <div>{this.props.artists[10]}</div>
             <div>{this.props.artists[11]}</div>

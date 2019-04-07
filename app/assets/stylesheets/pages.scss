@@ -20,6 +20,14 @@
   height:80px;
 }
 
+.left-intro {
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+}
+
 #signOutButton{
   align-items: center;
   color: #1db954;
@@ -87,10 +95,10 @@ a:visited {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  min-height: 100%;
-  // min-width: 100%;
-  min-width: 730px;
-  position: relative;
+  height: 100%;
+  width: 100%;
+  // min-width: 730px;
+  // position: relative;
   z-index: 0;
   background-color: rgba(black, .1);
 }
@@ -101,43 +109,6 @@ a:visited {
   margin-top:180px;
   margin-left:50px;
 }
-
-@media only screen and (max-width: 375px) {
-  #bblogo {
-    height: auto;
-  }
-
-  #myvid {
-    display: none;
-  }
-
-}
-
-@media screen and (min-width: 501px) {
-  .spotify div.desktopbody {
-    animation-play-state: paused;
-  }
-
-  .spotify{
-    min-width: 100%;
-  }
-  #mini-player{
-    display: none;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .spotify div.desktopbody {
-    animation-play-state: paused;
-  }
-  #full-body-player{
-    display: none;
-  }
-  .spotify{
-  min-width: 117%;
-  }
-}
-
 
 #loginlogo {
   margin-top:240px;
@@ -157,14 +128,14 @@ a:visited {
   z-index: -1;
 }
 
-
 .signin{
   align-items: center;
   border:0px white solid;
   flex-direction: column;
   order: 1;
-  width: 479px;
-  height: 100vh;
+  width: 25vw;
+  min-width: 18.8rem;
+  height: 100%;
   display: flex;
   animation: mymove 1s cubic-bezier(.5,.5,0,1);
   box-shadow: 3px 0px #1db954;
@@ -198,7 +169,9 @@ a:visited {
  }
 
 #userbox{
-  height: 70px;
+  height: 10vh;
+  min-height: 4rem;
+  max-height: 10vh;
   width: 100%;
   background-image: linear-gradient(#313233, #555656);
   color: white;
@@ -211,13 +184,16 @@ a:visited {
 
 #left{
   order: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #left img{
   width: 50px;
   height: auto;
   margin-left: 10px;
-  margin-top: 7px;
 }
 
 #right{
@@ -236,10 +212,10 @@ padding: 2vw;
   border:0px white solid;
   flex-direction: column;
   order: 2;
-  width: 1441px;
+  width: 75vw;
   display: flex;
   height: 100vh;
-  width: 100vw;
+  // width: 100vw;
   background-color: rgba(black, .5);
   animation: bgpulse 4s cubic-bezier(.5,.5,0,1) infinite;
 }
@@ -257,62 +233,54 @@ padding: 2vw;
     to {transform:rotate(720deg);}
 }
 
+@media only screen and (max-width: 420px) {
+  #bblogo {
+    height: auto;
+  }
 
-/* // dont know what to do with this yet
-// .pulsating-circle {
-//   position: absolute;
-//   left: 100%;
-//   top: 50%;
-//   transform: translateX(-50%) translateY(-50%);
-//   width: 30px;
-//   height: 30px;
-//
-//   &:before {
-//     content: '';
-//     position: relative;
-//     display: block;
-//     width: 300%;
-//     height: 300%;
-//     box-sizing: border-box;
-//     margin-left: -100%;
-//     margin-top: -100%;
-//     border-radius: 45px;
-//     background-color: rgba(29, 185, 84, .3);
-//     animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  .signin {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .desktopbody {
+    display: none;
+  }
+
+  #myvid {
+    display: none;
+  }
+
+  .case-small {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 421px) {
+  .spotify div.desktopbody {
+    animation-play-state: paused;
+  }
+
+  .spotify {
+    min-width: 100%;
+  }
+
+  #mini-player {
+    display: none;
+  }
+}
+
+// @media screen and (max-width: 500px) {
+//   .spotify div.desktopbody {
+//     animation-play-state: paused;
 //   }
-//
-//   &:after {
-//     content: '';
-//     position: absolute;
-//     left: 0;
-//     top: 0;
-//     display: block;
-//     width: 100%;
-//     height: 100%;
-//     background-color: rgba(29, 185, 84, .3);
-//     border-radius: 15px;
-//     box-shadow: 0 0 8px rgba(29,185,84,.3);
-//     animation: pulse-dot 1.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -.4s infinite;
+
+//   #full-body-player {
+//     display: none;
+//   }
+
+//   .spotify {
+//     min-width: 117%;
 //   }
 // }
-//
-// @keyframes pulse-ring {
-//   0% {
-//     transform: scale(.33);
-//   }
-//   80%, 100% {
-//     opacity: 0;
-//   }
-// }
-//
-// @keyframes pulse-dot {
-//   0% {
-//     transform: scale(.8);
-//   }
-//   50% {
-//     transform: scale(1);
-//   }
-//   100% {
-//     transform: scale(.8);
-//   }
-// } */
