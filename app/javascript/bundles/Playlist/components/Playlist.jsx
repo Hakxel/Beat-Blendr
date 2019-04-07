@@ -154,10 +154,10 @@ export default class Playlist extends Component {
                 <label htmlFor="distance"> {this.state.range} Feet ({(this.state.range/5280).toFixed(2)} miles)</label>
               </div>
             </div>
-            {
-              !playlistId && this.state.artists.length > 0 && <div className="artist-cloud"><ArtistCloud artists={this.state.artists} /></div>
-            }
           </div>
+          {
+            !playlistId && this.state.artists.length > 0 && <div className="artist-cloud"><ArtistCloud artists={this.state.artists} /></div>
+          }
         </div>
       )
     }else{

@@ -1,6 +1,8 @@
 
 .tag-cloud {
   flex: 1;
+  width: 100%;
+  margin: auto;
 }
 
 .tag-cloud > div {
@@ -9,28 +11,26 @@
 
 .cloud-outer {
   align-items: center;
-	// bottom: 0;
 	display: flex;
 	flex-direction: column;
-	// justify-content: flex-start;
-	// left: 0;
-	position: absolute;
-	right: 0;
-	// top: 0;
-  height: 100%;
-  max-width: 60vw;
-  max-height: 40vw;
-  width: 100%;
+	justify-content: center;
+  height: 70vh;
+  max-width: 100%;
+  max-height: 100%;
+  width: 70vw;
+  margin: auto;
 }
 
 .cloud-inner {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 100%;
-  max-height: 40vw;
-  padding-top: 5vh;
-  margin-right: 10em;
+  height: 80%;
+  width: 90%;
+  max-height: 80%;
+  min-height: 50vh;
+  padding-top: 1rem;
+  margin: auto;
+  // justify-content: center;
 }
 
 .spotifycontainer{
@@ -39,8 +39,8 @@
   padding-top: 1rem;
   display: flex;
   flex-direction: column;
-  align-content: space-between;
-  justify-content: center;
+  align-content: center;
+  justify-content: space-between;
   height: 100vh;
 }
 .spotify-player{
@@ -112,7 +112,11 @@ video.signed-in {
 }
 
 @media (max-width: 420px) {
-
+  .spotifycontainer {
+    height: 88vh;
+    width: 98vw;
+  }
+  
   .select-distance {
     width: 100%
   }
@@ -125,6 +129,11 @@ video.signed-in {
     width: 100%
   }
 
+  .cloud-outer {
+    width: 90vw;
+    height: 60vh;
+  }
+
   .cloud-inner {
     width: 90vw;
     height: 50vh;
@@ -135,8 +144,5 @@ video.signed-in {
     height: 65vh;
   }
 
-  .spotifycontainer {
-    height: 89vh;
-  }
 }
           

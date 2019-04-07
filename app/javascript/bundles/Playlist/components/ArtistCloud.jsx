@@ -4,12 +4,12 @@ import randomColor from 'randomcolor'
 
 const styles = {
   large: {
-    fontSize: 60,
+    fontSize: 48,
     fontWeight: 'bold'
   },
   small: {
     opacity: 0.7,
-    fontSize: 16
+    fontSize: 32,
   }
 }
 
@@ -31,7 +31,7 @@ export default class ArtistCloud extends Component {
             className='tag-cloud'
             style={{
               fontFamily: 'sans-serif',
-              fontSize: 30,
+              fontSize: '20%',
               color: () => randomColor({
                 hue: 'blue'
               }),
