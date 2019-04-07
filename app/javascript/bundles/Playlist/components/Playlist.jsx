@@ -161,7 +161,7 @@ export default class Playlist extends Component {
         </div>
       )
     }else{
-      return <p>Please wait while we find your location...</p>
+      return <p className="location-notice">Please wait while we find your location...</p>
     }
   }
 }
