@@ -73,7 +73,7 @@ export default class Playlist extends Component {
     const { innerHeight, innerWidth } = window
     this.setState({
       playerHeight: 0.7 * innerHeight,
-      playerWidth: innerWidth < 500 ? 450 : 0.8 * innerWidth
+      playerWidth: innerWidth < 500 ? 420 : 0.8 * innerWidth
     })
   }
 
@@ -113,19 +113,21 @@ export default class Playlist extends Component {
     if(latitude && longitude){
       return(
         <div className="spotifycontainer">
-          {
-            playlistId &&
-            <iframe
-              id="Spotifyplayer"
-              className="spotify-player"
-              src={`https://open.spotify.com/embed/playlist/${playlistId}`}
-              width={this.state.playerWidth}
-              height={this.state.playerHeight}
-              frameBorder="0"
-              allowtransparency="true"
-              allow="encrypted-media"
-            ></iframe>
-          }
+          <div className="player-frame">
+            {
+              playlistId &&
+              <iframe
+                id="Spotifyplayer"
+                className="spotify-player"
+                src={`https://open.spotify.com/embed/playlist/${playlistId}`}
+                width={'100%'}
+                height={'100%'}
+                frameBorder="0"
+                allowtransparency="true"
+                allow="encrypted-media"
+              ></iframe>
+            }          
+          </div>
           <div className="playlist-control">
             <div className="type-select">
               <select name="dropdown" className="list-options"

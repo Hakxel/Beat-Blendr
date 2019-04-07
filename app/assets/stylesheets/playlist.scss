@@ -36,9 +36,17 @@
 .spotifycontainer{
   text-align: center;
   align-items: center;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  justify-content: center;
+  height: 100vh;
 }
 .spotify-player{
   opacity: 0.77;
+  width: 70vw;
+  height: 70vh;
 }
 
 #refreshbtn{
@@ -54,7 +62,6 @@
   height: 28px;
   width: 100px;
 }
-
           
 video {
   display: block;
@@ -70,6 +77,8 @@ video.signed-in {
   justify-content: center;
   align-items: center;
   width: 60vw;
+  margin: auto;
+  padding: 10px;
 }
 
 .type-select {
@@ -114,6 +123,20 @@ video.signed-in {
 
   #range-input {
     width: 100%
+  }
+
+  .cloud-inner {
+    width: 90vw;
+    height: 50vh;
+  }
+
+  .spotify-player {
+    width: 94vw;
+    height: 65vh;
+  }
+
+  .spotifycontainer {
+    height: 89vh;
   }
 }
           
